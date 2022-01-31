@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Association">
+    <Position X="6.281" Y="3.417" Height="0.312" Width="0.887" />
+  </Comment>
+  <Comment CommentText="Composition">
+    <Position X="8.896" Y="4.229" Height="0.302" Width="0.94" />
+  </Comment>
+  <Class Name="DevBlog.Author">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Author.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Posts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DevBlog.Post">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAABAAAAAABAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Post.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Authors" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DevBlog.Storage">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Storage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Post" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

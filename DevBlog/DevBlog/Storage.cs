@@ -5,11 +5,14 @@ using System.Text;
 
 namespace DevBlog
 {
-    public class Program
+    public class Storage
     {
-        static void Main(string[] args)
+        public Post Post
         {
-
+            get => default;
+            set
+            {
+            }
         }
     }
 }
