@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "aa1b37c9-53c4-4e16-aa1d-d16fdf9512c3": {
+      "ProjectGuid": "aa1b37c9-53c4-4e16-aa1d-d16fdf9512c3",
+      "DisplayName": "Concert",
+      "ColorIndex": 0
+    },
+    "9badea60-a342-4e9a-9ac3-470dbdf6d260": {
+      "ProjectGuid": "9badea60-a342-4e9a-9ac3-470dbdf6d260",
+      "DisplayName": "TestConcert",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

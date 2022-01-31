@@ -1,0 +1,15 @@
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\bin\Debug\net6.0\Concert.exe
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\bin\Debug\net6.0\Concert.deps.json
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\bin\Debug\net6.0\Concert.runtimeconfig.json
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\bin\Debug\net6.0\Concert.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\bin\Debug\net6.0\ref\Concert.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\bin\Debug\net6.0\Concert.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.csproj.AssemblyReference.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.AssemblyInfoInputs.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.AssemblyInfo.cs
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\ref\Concert.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\Concert\Concert\ConsoleApp1\obj\Debug\net6.0\Concert.genruntimeconfig.cache

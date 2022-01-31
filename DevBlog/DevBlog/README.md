@@ -1,6 +1,6 @@
-﻿### Developer Blog
-## Current Version: __0.0.0__
+﻿## Developer Blog
+### Current Version: __0.0.0__
 
-## Update notes:
+### Update notes:
 - 0.0.0
   - Initial commit.
