@@ -16,6 +16,21 @@ namespace DevBlog
         }
 
         public List<Post> Posts { get; set; }
-        
+
+        public int ID
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public bool Active
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

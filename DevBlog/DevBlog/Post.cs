@@ -7,6 +7,11 @@ namespace DevBlog
 {
     public class Post
     {
+        public Post()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public string Title
         {
             get => default;
@@ -32,6 +37,22 @@ namespace DevBlog
         }
 
         public List<Author> Authors
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public int ID
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public int Active
         {
             get => default;
             set

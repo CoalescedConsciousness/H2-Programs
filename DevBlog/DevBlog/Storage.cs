@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DevBlog
 {
-    public class Storage
+    public class PostStorage : IStorage
     {
         public Post Post
         {
@@ -13,6 +13,42 @@ namespace DevBlog
             set
             {
             }
+        }
+
+        public void Save()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Load()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Create()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    public class AuthorStorage : IStorage
+    {
+        public Author Author
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public void Save()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Load()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.csproj.AssemblyReference.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.AssemblyInfoInputs.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.AssemblyInfo.cs
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\bin\Debug\net6.0\Inherit.exe
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\bin\Debug\net6.0\Inherit.deps.json
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\bin\Debug\net6.0\Inherit.runtimeconfig.json
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\bin\Debug\net6.0\Inherit.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\bin\Debug\net6.0\ref\Inherit.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\bin\Debug\net6.0\Inherit.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\ref\Inherit.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\Inherit\obj\Debug\net6.0\Inherit.genruntimeconfig.cache
