@@ -4,66 +4,19 @@
     <Position X="6.291" Y="2.271" Height="0.312" Width="0.866" />
   </Comment>
   <Comment CommentText="Composition">
-    <Position X="8.427" Y="5.292" Height="0.302" Width="0.94" />
+    <Position X="9.24" Y="5.896" Height="0.302" Width="0.94" />
   </Comment>
   <Comment CommentText="Composition">
     <Position X="4.146" Y="4.917" Height="0.302" Width="0.94" />
   </Comment>
-  <Class Name="DevBlog.Author">
-    <Position X="4.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAABAAAAAQAAAAAAAAgAAAAAAAAAAA=</HashCode>
-      <FileName>Author.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Posts" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="DevBlog.Post">
-    <Position X="7.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgEAAAAABAAAAAABAAAAhAAAAAAAAAAA=</HashCode>
-      <FileName>Post.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Authors" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="DevBlog.PostStorage">
-    <Position X="7.5" Y="6.25" Width="1.5" />
-    <AssociationLine Name="Post" Type="DevBlog.Post">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.578" Y="0.112" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAACAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>Storage.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Post" />
-    </ShowAsAssociation>
-    <Lollipop Position="0.1" />
-  </Class>
-  <Class Name="DevBlog.AuthorStorage">
-    <Position X="4.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Storage.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Author" />
-    </ShowAsAssociation>
-    <Lollipop Position="0.1" />
-  </Class>
-  <Interface Name="DevBlog.IStorage">
+  <Interface Name="Storage.IStorage">
     <Position X="1.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IStorage.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DevBlog.ICRUD">
+  <Interface Name="Storage.ICRUD">
     <Position X="1.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAgAAAAAAAAAAgAAEAAEAgAAAAAAAAAAA=</HashCode>

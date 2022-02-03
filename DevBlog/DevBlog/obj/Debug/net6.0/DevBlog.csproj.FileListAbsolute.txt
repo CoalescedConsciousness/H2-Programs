@@ -3,3 +3,16 @@ C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBl
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.AssemblyInfoInputs.cache
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.AssemblyInfo.cs
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.exe
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.deps.json
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.runtimeconfig.json
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\ref\DevBlog.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\Common.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\Common.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.csproj.CopyComplete
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\ref\DevBlog.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.genruntimeconfig.cache

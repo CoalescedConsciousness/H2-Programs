@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace DevBlog
+namespace Helper
 {
-    public class Global
+    internal class Class1
     {
     }
 }

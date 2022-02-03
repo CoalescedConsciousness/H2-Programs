@@ -7,7 +7,7 @@ namespace DevBlog
 {
     public interface IStorage
     {
-        void Load();
-        void Save();
+        public void Load();
+        public void Save();
     }
 }

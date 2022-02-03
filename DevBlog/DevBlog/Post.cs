@@ -1,63 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Common;
+using Storage;
 
 namespace DevBlog
 {
-    public class Post
+    [Serializable()]
+    public record Post
     {
-        public Post()
+        string _title;
+        string _body;
+        List<Author> _authors;
+        int _id;
+
+        public Post(Author writer, string text, string title)
         {
-            throw new System.NotImplementedException();
+            Title = title;
+            Authors.Add(writer);
+            Body = text;
+            Date = DateTime.Now;
+            ID = IDHandler.SetPostID();
+            Active = true;
         }
 
         public string Title
         {
-            get => default;
-            set
-            {
-            }
+            get => _title;
+            set => _title = value;
         }
 
         public string Body
         {
-            get => default;
-            set
-            {
-            }
+            get => _body;
+            set => _body = value;
         }
 
-        public System.DateTime Date
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
+        public DateTime Date { get; set; }
+        public DateTime EditDate { get; set; }
         public List<Author> Authors
         {
-            get => default;
-            set
-            {
-            }
+            get => _authors;   
         }
 
         public int ID
         {
-            get => default;
-            set
-            {
-            }
+            get => _id;
+            set => _id = value; 
         }
 
-        public int Active
+        public bool Active
         {
-            get => default;
-            set
-            {
-            }
+            get => Active;
+            set => Active = value;
+        }
+        
+        public void PostMessage(Author writer, string text, string title)
+        {
+            PostStorage.PostDB.Add(new Post(writer, text, title));
         }
     }
 }
