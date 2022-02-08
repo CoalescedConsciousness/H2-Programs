@@ -1,7 +1,4 @@
 ﻿using DevBlog;
-using System;
-using System.IO;
-using System.Xml.Serialization
 using Common;
 
 namespace Storage;
@@ -9,41 +6,52 @@ namespace Storage;
 /// <summary>
 /// Public record used to maintain database of Posts, utilizes interface to standardize
 /// </summary>
-public record PostStorage : IStorage
+public class PostStorage : IStorage
 {
     internal const string PostDatabase = @"posts.txt";
     public static List<Post> PostDB = new List<Post>();
 
-    public void Save()
+    // For the sake of concept, let's assume the Post database is off-premise, and thus I/O-bound:
+    public static async void ReadAll()
     {
+        Console.WriteLine("\n Reading all Posts: ");
+
+        while (!Task.Run(() => Database.GetAllFromDatabase("Post")).IsCompleted)
+        {
+            Console.Write(".");
+        }
+
+    }
+
+    public static void Save()
+    {
+        List<string> currentList = Database.GetColumn("Post", "ID");
         foreach (Post post in PostDB)
         {
-            if (!PostDB.Any(x => x.ID == post.ID))
+            if (!currentList.Contains(post.ID.ToString()))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Post));
-                StreamWriter sw = new StreamWriter(PostDatabase);
-                serializer.Serialize(sw, post);
-                sw.Close();
+                List<string> fields = new List<string>() { "Title", "Body" };
+                List<string> values = new List<string>() { post.Title, post.Body };
+
+                Database.SaveToDatabase(fields, values, "Post");
             }
-                
         }
     }
 
-    public void Load()
+
+    public static async void Load()
     {
-        if (File.Exists(PostDatabase))
+        Task<List<object>> x = Database.GetAllFromDatabase("Post", "false");
+       
+        for (int i = 0; i < x.Result.Count; i++) /// HERE BE TROUBLE
         {
-            foreach (Post post in PostDB)
-            {
-                XmlSerializer read = new XmlSerializer(typeof(Post));
-                StreamReader file = new StreamReader(PostDatabase);
-                Post result = (Post)read.Deserialize(file);
-                file.Close();
-            }
+            
+            Console.WriteLine(x.Result[i].ToString());
         }
+        Console.ReadKey();
     }
 
-    public void Update(Post post, string field, string newData)
+    public static void Update(Post post, string field, string newData)
     {
         Post target = PostDB.Find(x => x.ID == post.ID);
             
@@ -63,32 +71,51 @@ public record PostStorage : IStorage
 /// <summary>
 /// Used to maintain database of available Authors.
 /// </summary>
-public record AuthorStorage : IStorage
+public class AuthorStorage : IStorage
 {
     internal static string AuthorDatabase = @"authors.txt";
     public static List<Author> AuthorDB = new List<Author>();
-
-    public void Save()
+    public static async void ReadAll()
     {
+        Console.WriteLine("\nLoading database");
+        Task<List<object>> list = Database.GetAllFromDatabase("Author");
+        
+        while (!list.IsCompleted) 
+        {
+            Console.Write(".");
+        }
+
+        List<object> aList = await list;
+    }
+
+
+    public static void Save()
+    {
+        List<string> currentList = Database.GetColumn("Author", "ID");
         foreach (Author author in AuthorDB)
         {
-            if (!AuthorDB.Any(x => x.ID == author.ID))
+            if (!currentList.Contains(author.ID.ToString()))
             {
-                AuthorDB.Add(author);
+                List<string> fields = new List<string>() { "Name", "Email", "PostCount", "Active" };
+                List<string> values = new List<string>() { author.Name, author.Email, author.PostCount.ToString(), author.Active.ToString() };
+
+                Database.SaveToDatabase(fields, values, "Author");
             }
-            else
+        }
+    }
+ 
+    public static void Load()
+    {
+        
+        {
+            foreach (Author author in AuthorDB)
             {
-                throw new ExistsException(author.Name);
+                
             }
         }
     }
 
-    public void Load()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Update(Author author, string field, string newData)
+    public static void Update(Author author, string field, string newData)
     {
         Author target = AuthorDB.Find(x => x.ID == author.ID);
         object p = field.ToLower() switch

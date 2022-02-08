@@ -50,7 +50,17 @@
       "ProjectGuid": "dd43fd63-1eff-4966-8062-dea4873ffcaf",
       "DisplayName": "Helper",
       "ColorIndex": 8
+    },
+    "98d9f83b-3501-4842-a4f6-3661ab35b322": {
+      "ProjectGuid": "98d9f83b-3501-4842-a4f6-3661ab35b322",
+      "DisplayName": "LocalDB",
+      "ColorIndex": 9
+    },
+    "730bc2b1-ca04-43b4-8e9f-aa50e23f15b6": {
+      "ProjectGuid": "730bc2b1-ca04-43b4-8e9f-aa50e23f15b6",
+      "DisplayName": "DevBlogDB",
+      "ColorIndex": 10
     }
   },
-  "NextColorIndex": 9
+  "NextColorIndex": 11
 }

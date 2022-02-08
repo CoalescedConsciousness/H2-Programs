@@ -1,18 +1,21 @@
 ﻿namespace Common;
-public static class IDHandler 
-{
-    public static int PostID;
-    public static int AuthorID;
 
-    public static int SetPostID()
-    {
-        ++PostID;
-        return PostID;
-    }
+// This is now deprecated as SQL handles ID automatically, but kept it in for proof-of-concept.
+//public static class IDHandler 
+//{
+//    public static int PostID;
+//    public static int AuthorID;
+    
 
-    public static int SetAuthorID()
-    {
-        ++AuthorID;
-        return AuthorID;
-    }
-}
+//    public static int SetPostID()
+//    {
+//        ++PostID;
+//        return PostID;
+//    }
+
+//    public static int SetAuthorID()
+//    {
+//        ++AuthorID;
+//        return AuthorID;
+//    }
+//}

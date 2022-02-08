@@ -4,22 +4,28 @@ using Storage;
 namespace DevBlog
 {
     [Serializable()]
-    public record Post
+    public class Post
     {
         string _title;
         string _body;
         List<Author> _authors;
         int _id;
+        bool _active;
 
         public Post(Author writer, string text, string title)
         {
+            List<Author> test = new List<Author>();
+            Console.WriteLine(writer.Name);
             Title = title;
-            Authors.Add(writer);
+            test.Add(writer);
             Body = text;
             Date = DateTime.Now;
-            ID = IDHandler.SetPostID();
+            ID = Database.GetNextID("Post");
             Active = true;
         }
+
+        public List<string> Links { get; set; }
+        
 
         public string Title
         {
@@ -37,7 +43,8 @@ namespace DevBlog
         public DateTime EditDate { get; set; }
         public List<Author> Authors
         {
-            get => _authors;   
+            get => _authors;
+            set => _authors = value;   
         }
 
         public int ID
@@ -48,13 +55,34 @@ namespace DevBlog
 
         public bool Active
         {
-            get => Active;
-            set => Active = value;
+            get => _active;
+            set => _active = value;
         }
         
-        public void PostMessage(Author writer, string text, string title)
+        public static void PostCreate(Author writer, string text, string title)
         {
-            PostStorage.PostDB.Add(new Post(writer, text, title));
+            Console.WriteLine("Please designate which Author is writing:");
+            List<string> ids = Database.GetColumn("Author");
+            List<string> names = Database.GetColumn("Author", "Name");
+
+            var ts = ids.Zip(names);
+            foreach (var x in ts)
+            {
+                Console.WriteLine($"{x.First} {x.Second}");
+            }
+            string aInput = Console.ReadLine();
+            Author author = Author.GetAuthor(aInput);
+            Console.WriteLine("Title of your post: ");
+            string tInput = Console.ReadLine();
+            Console.WriteLine("Write the main body of your post:");
+            string bInput = Console.ReadLine();
+
+            Post p = new Post(writer, text, title);
+            p.ID = Database.GetNextID("Post");
+            p.Active = true;
+            PostStorage.PostDB.Add(p);
+            PostStorage.Save();
+
         }
     }
 }

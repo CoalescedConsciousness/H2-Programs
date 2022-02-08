@@ -3,14 +3,14 @@ using Storage;
 
 namespace DevBlog
 {
-    public record Author
+    public class Author
     {
 
         string _name;
         string _email;
         int _id;
         int _postCount;
-
+        bool _active;
         
         public List<Post> Posts { get; set; }
         public string Name
@@ -40,8 +40,8 @@ namespace DevBlog
 
         public bool Active
         {
-            get => Active;
-            set => Active = value;
+            get => _active;
+            set => _active = value;
         }
 
         // Constructor
@@ -49,19 +49,32 @@ namespace DevBlog
         {
             Name = name;
             Email = email;
-            ID = IDHandler.SetAuthorID();
         }
 
         // Methods
 
-        /// <summary>
+        /// <summary> 
         /// Creates an (anonymous) Author object and adds it to a (known) list.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="email"></param>
-        public void CreateAuthor(string name, string email)
-        { AuthorStorage.AuthorDB.Add(new Author(name, email)); }
+        public static Author CreateAuthor(string name, string email)
+        { 
+            Author author = new(name, email);
+            // Depricated: AuthorStorage.AuthorDB.Add(author);
+            author.ID = Database.GetNextID("Author");
+            author.Active = true;
+            author.PostCount = 0;
+            AuthorStorage.AuthorDB.Add(author);
+            AuthorStorage.Save();
+            return author;
+        
+        }
 
+        public static Author GetAuthor(string id)
+        {
+            return AuthorStorage.AuthorDB.Find(x => x.ID == int.Parse(id));
+        }
 
     }
 }
