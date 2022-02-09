@@ -48,6 +48,6 @@ As the main intended feature here is that of the functionality of such a program
 
 
 ### TO-DO:
-[ ] Add URL link and hyperlink-like functionality.
-[ ] Document the methods, baby! Yeah!
-[ ] Play-time.
+- Add URL link and hyperlink-like functionality.
+- Document the methods, baby! Yeah!
+- Play-time.
