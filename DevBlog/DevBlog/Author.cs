@@ -3,6 +3,7 @@ using Storage;
 
 namespace DevBlog
 {
+    [Serializable]
     public class Author
     {
 
@@ -51,6 +52,8 @@ namespace DevBlog
             Email = email;
         }
 
+        private Author() { }
+
         // Methods
 
         /// <summary> 
@@ -60,7 +63,7 @@ namespace DevBlog
         /// <param name="email"></param>
         public static Author CreateAuthor(string name, string email)
         { 
-            Author author = new(name, email);
+            Author author = new Author(name, email);
             // Depricated: AuthorStorage.AuthorDB.Add(author);
             author.ID = Database.GetNextID("Author");
             author.Active = true;
@@ -71,9 +74,13 @@ namespace DevBlog
         
         }
 
-        public static Author GetAuthor(string id)
+        public static Author GetAuthorByID(string id)
         {
             return AuthorStorage.AuthorDB.Find(x => x.ID == int.Parse(id));
+        }
+        public static Author GetAuthorByName(string name)
+        {
+            return AuthorStorage.AuthorDB.Find(x => x.Name == name);
         }
 
     }

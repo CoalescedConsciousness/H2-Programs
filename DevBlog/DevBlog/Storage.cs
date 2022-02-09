@@ -32,7 +32,8 @@ public class PostStorage : IStorage
             {
                 List<string> fields = new List<string>() { "Title", "Body" };
                 List<string> values = new List<string>() { post.Title, post.Body };
-
+                Console.WriteLine("HELLO");
+                Console.ReadKey();
                 Database.SaveToDatabase(fields, values, "Post");
             }
         }
@@ -41,12 +42,18 @@ public class PostStorage : IStorage
 
     public static async void Load()
     {
-        Task<List<object>> x = Database.GetAllFromDatabase("Post", "false");
-       
-        for (int i = 0; i < x.Result.Count; i++) /// HERE BE TROUBLE
+        List<object> x = await Database.GetAllFromDatabase("Post", true); // False removes writes to console.
+
+        foreach (List<object> listItem in x)
         {
-            
-            Console.WriteLine(x.Result[i].ToString());
+            List<string> valList = new List<string>();
+            Console.WriteLine();
+            foreach (object item in listItem)
+            {
+                Console.Write(item);
+                valList.Add(item.ToString());
+            }
+            Console.WriteLine("THE END");
         }
         Console.ReadKey();
     }

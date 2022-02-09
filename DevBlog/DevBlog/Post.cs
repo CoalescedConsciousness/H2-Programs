@@ -14,15 +14,17 @@ namespace DevBlog
 
         public Post(Author writer, string text, string title)
         {
-            List<Author> test = new List<Author>();
-            Console.WriteLine(writer.Name);
+            List<Author> authors = new List<Author>();
+            authors.Add(writer);
             Title = title;
-            test.Add(writer);
             Body = text;
             Date = DateTime.Now;
             ID = Database.GetNextID("Post");
             Active = true;
+            PostStorage.PostDB.Add(this);
+            PostStorage.Save();
         }
+        public Post() { }
 
         public List<string> Links { get; set; }
         
@@ -59,7 +61,8 @@ namespace DevBlog
             set => _active = value;
         }
         
-        public static void PostCreate(Author writer, string text, string title)
+        
+        public static void PostMessage()
         {
             Console.WriteLine("Please designate which Author is writing:");
             List<string> ids = Database.GetColumn("Author");
@@ -71,15 +74,13 @@ namespace DevBlog
                 Console.WriteLine($"{x.First} {x.Second}");
             }
             string aInput = Console.ReadLine();
-            Author author = Author.GetAuthor(aInput);
+            Author author = Author.GetAuthorByID(aInput);
             Console.WriteLine("Title of your post: ");
             string tInput = Console.ReadLine();
             Console.WriteLine("Write the main body of your post:");
             string bInput = Console.ReadLine();
 
-            Post p = new Post(writer, text, title);
-            p.ID = Database.GetNextID("Post");
-            p.Active = true;
+            Post p = new Post(author, bInput, tInput);
             PostStorage.PostDB.Add(p);
             PostStorage.Save();
 

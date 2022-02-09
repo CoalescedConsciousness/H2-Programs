@@ -79,22 +79,22 @@ namespace DevBlog
 
         public static async void CreateTestData()
         {
-            //Task<Author> author = TestAuthorCreate();
-            //Post post = await TestPostCreate(await author);
-            Author author = TestAuthorCreate();
-            Post post = TestPostCreate(author);
+            Task<Author> author = TestAuthorCreate();
+            Console.WriteLine("Creating Author");
+            Author a = await author;
+            Post post = await TestPostCreate(a);
             Console.WriteLine("Creating Test Data");
-            //await post;
-            Console.WriteLine($"{author.Name} wrote the post '{post.Title}', readin:\n\n{post.Body}");
+            
+            Console.WriteLine($"{a.Name} wrote the post '{post.Title}', readin:\n\n{post.Body}");
 
         }
-        private static Author TestAuthorCreate()
+        private static async Task<Author> TestAuthorCreate()
         {
             return Author.CreateAuthor("Test", "Testhest@haster.ko");
 
         }
 
-        private static Post TestPostCreate(Author author)
+        private static async Task<Post> TestPostCreate(Author author)
         {
 
             Post p = new Post(author, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor", "Test Title");
