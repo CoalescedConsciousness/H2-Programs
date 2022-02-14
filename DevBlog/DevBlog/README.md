@@ -1,5 +1,5 @@
 ﻿## Developer Blog
-### Current Version: __1.0.1__
+### Current Version: __1.0.2__
 ### Description:
 Small program intended to act as a proto-structural backbone (i.e. back-end) for an eventual DevBlog.
 As the main intended feature here is that of the functionality of such a program, the use of a UI has been foregone, in exchange for greater emphasis on logic structure and data integrity.
@@ -20,6 +20,15 @@ As the main intended feature here is that of the functionality of such a program
         I.e., they handle [C]reation of records, but inherently involve Storage, while Storage is most capable of accessing the permanent data storage (SQL DB) for reading, updates, and deletions/erasures.
 
 ### Update notes:
+- 1.0.2
+  - First pass for documentation added.
+  - Slight modifications and clean-up in regards to CRUD methods and their implementation and functionality in terms of volatile and permanent storage options.
+    - IStorage interface deprecated as a result.
+    - Reposity for AuthorCRUD and PostCRUD established as a result.
+    - Collection of "Common" classes moved to program specific folder, albeit it remains independent from it.
+  - Added a few more helpers for Menus and Database methodologies.
+  - Added simple UML (UML.png) to program, as Class Diagram functionality was shoddy - at best!
+
 - 1.0.1
   - Expanded README for better granularity and clarity.
   - Added examples of async/await, extended methods, delegations, lambda, and SQL data management.
@@ -48,6 +57,4 @@ As the main intended feature here is that of the functionality of such a program
 
 
 ### TO-DO:
-- Add URL link and hyperlink-like functionality.
-- Document the methods, baby! Yeah!
 - Play-time.

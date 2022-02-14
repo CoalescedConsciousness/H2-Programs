@@ -155,18 +155,17 @@
           }
         }
       },
-      "Common/1.0.0": {
+      "DevBlog.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Npgsql": "6.0.3",
           "System.Data.SqlClient": "4.8.3"
         },
         "compile": {
-          "bin/placeholder/Common.dll": {}
+          "bin/placeholder/DevBlog.Common.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Common.dll": {}
+          "bin/placeholder/DevBlog.Common.dll": {}
         }
       }
     }
@@ -533,15 +532,15 @@
         "version.txt"
       ]
     },
-    "Common/1.0.0": {
+    "DevBlog.Common/1.0.0": {
       "type": "project",
-      "path": "../Common/Common.csproj",
-      "msbuildProject": "../Common/Common.csproj"
+      "path": "../DevBlog.Common/DevBlog.Common.csproj",
+      "msbuildProject": "../DevBlog.Common/DevBlog.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Common >= 1.0.0",
+      "DevBlog.Common >= 1.0.0",
       "Npgsql >= 6.0.3",
       "System.Data.SqlClient >= 4.8.3"
     ]
@@ -573,8 +572,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\DevBlog\\Common\\Common.csproj": {
-              "projectPath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\DevBlog\\Common\\Common.csproj"
+            "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\DevBlog\\DevBlog.Common\\DevBlog.Common.csproj": {
+              "projectPath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\DevBlog\\DevBlog.Common\\DevBlog.Common.csproj"
             }
           }
         }

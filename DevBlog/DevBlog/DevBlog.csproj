@@ -14,7 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
+    <Folder Include="Info\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DevBlog.Common\DevBlog.Common.csproj" />
   </ItemGroup>
 
 </Project>

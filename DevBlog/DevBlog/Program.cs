@@ -1,5 +1,6 @@
 ﻿using Common;
 using System.Diagnostics;
+using DevBlog.Repository;
 
 namespace DevBlog
 {
@@ -7,12 +8,27 @@ namespace DevBlog
     {
         static void Main(string[] args)
         {
-            Menu.CreateTestData();
-            Storage.PostStorage.Load();
+            Init();
+            
             Menu.Run();
             // Lonelyyyy, I'm so lonelyyyyy,
             // I've got nobodyyyyy,
             // To call my ooooOOOOOwn.
+
+            Conclude();
+        }
+
+        private static void Init()
+        {
+            
+            AuthorCRUD.LoadAsync();
+            PostCRUD.LoadAsync();
+        }
+
+        private static void Conclude()
+        {
+            AuthorCRUD.Save();
+            PostCRUD.Save();
         }
     }
 }

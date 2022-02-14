@@ -1,11 +1,12 @@
 ﻿using Common;
-using Storage;
 
 namespace DevBlog
 {
     [Serializable]
     public class Author
     {
+        internal static string AuthorDatabase = @"authors.txt";
+        public static List<Author> AuthorDB = new List<Author>();
 
         string _name;
         string _email;
@@ -46,42 +47,33 @@ namespace DevBlog
         }
 
         // Constructor
-        private Author(string name, string email)
+       
+        internal Author() { }
+
+        // Method
+        
+
+        /// <summary>
+        /// Fetches author object from list by its ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Author GetAuthorByID(int id)
         {
-            Name = name;
-            Email = email;
+            return AuthorDB.Find(x => x.ID == id);
         }
 
-        private Author() { }
 
-        // Methods
-
-        /// <summary> 
-        /// Creates an (anonymous) Author object and adds it to a (known) list.
+        /// <summary>
+        /// Fetches author object from list by its name.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="email"></param>
-        public static Author CreateAuthor(string name, string email)
-        { 
-            Author author = new Author(name, email);
-            // Depricated: AuthorStorage.AuthorDB.Add(author);
-            author.ID = Database.GetNextID("Author");
-            author.Active = true;
-            author.PostCount = 0;
-            AuthorStorage.AuthorDB.Add(author);
-            AuthorStorage.Save();
-            return author;
-        
-        }
-
-        public static Author GetAuthorByID(string id)
-        {
-            return AuthorStorage.AuthorDB.Find(x => x.ID == int.Parse(id));
-        }
+        /// <returns></returns>
         public static Author GetAuthorByName(string name)
         {
-            return AuthorStorage.AuthorDB.Find(x => x.Name == name);
+            return AuthorDB.Find(x => x.Name == name);
         }
-
+        
+        
     }
 }

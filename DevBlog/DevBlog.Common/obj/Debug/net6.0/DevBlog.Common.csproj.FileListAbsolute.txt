@@ -1,0 +1,12 @@
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\bin\Debug\net6.0\DevBlog.Common.deps.json
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\bin\Debug\net6.0\DevBlog.Common.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\bin\Debug\net6.0\ref\DevBlog.Common.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\bin\Debug\net6.0\DevBlog.Common.pdb
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\DevBlog.Common.csproj.AssemblyReference.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\DevBlog.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\DevBlog.Common.AssemblyInfoInputs.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\DevBlog.Common.AssemblyInfo.cs
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\DevBlog.Common.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\DevBlog.Common.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\ref\DevBlog.Common.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog.Common\obj\Debug\net6.0\DevBlog.Common.pdb

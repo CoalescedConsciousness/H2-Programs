@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "DevBlog/1.0.0": {
         "dependencies": {
-          "Common": "1.0.0",
+          "DevBlog.Common": "1.0.0",
           "Npgsql": "6.0.3",
           "System.Data.SqlClient": "4.8.3"
         },
@@ -103,13 +103,12 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "Common/1.0.0": {
+      "DevBlog.Common/1.0.0": {
         "dependencies": {
-          "Npgsql": "6.0.3",
           "System.Data.SqlClient": "4.8.3"
         },
         "runtime": {
-          "Common.dll": {}
+          "DevBlog.Common.dll": {}
         }
       }
     }
@@ -197,7 +196,7 @@
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
-    "Common/1.0.0": {
+    "DevBlog.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

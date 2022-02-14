@@ -9,8 +9,6 @@ C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBl
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.dll
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\ref\DevBlog.dll
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.pdb
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\Common.dll
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\Common.pdb
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.csproj.CopyComplete
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\DevBlog.dll
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\obj\Debug\net6.0\ref\DevBlog.dll
@@ -23,3 +21,5 @@ C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\runti
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\Npgsql.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.Common.dll
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\DevBlog\DevBlog\bin\Debug\net6.0\DevBlog.Common.pdb
