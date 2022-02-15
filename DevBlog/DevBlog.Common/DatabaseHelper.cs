@@ -23,11 +23,7 @@ namespace Common
                     intIds.Add(int.Parse(id));
                 }
             }
-            if (intIds.Count > 0)
-            {
-                Console.WriteLine(intIds.Max() + 1);
-            }
-            Console.WriteLine(intIds.Count());
+            
             return intIds.Count > 0 ? intIds.Max() + 1 : 1;
         }
 
@@ -82,7 +78,7 @@ namespace Common
             {
                 for (int i = 0; i < data.FieldCount; i++)
                 {
-                    Console.Write($"| {data.GetName(i),15}   |");
+                    Console.Write($"| {data.GetName(i),25}   |");
                 }
                 Console.WriteLine();
             }
@@ -103,7 +99,7 @@ namespace Common
                 recList.Add(record[i]);
                 if (console == true)
                 {
-                    Console.Write($"| {record[i],15}   |");
+                    Console.Write($"| {record[i],25}   |");
                 }
             }
 

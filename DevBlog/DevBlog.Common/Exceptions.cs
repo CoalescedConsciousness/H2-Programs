@@ -12,3 +12,10 @@
 //    }
 //}
 
+public class UnableToDelete : Exception
+{
+    public UnableToDelete() : base() { }
+
+    public UnableToDelete(string id) : base($"Unable to delete {id}") { }
+}
+

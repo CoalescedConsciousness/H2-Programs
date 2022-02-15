@@ -1,25 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
   <Class Name="DevBlog.TestMenu" Collapsed="true">
-    <Position X="10.75" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAIAAAAAAAAAEAAAAEAAAAAAAQAAAAAAAAAAAAEI=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAEAAAAEIAAAAAAQAAAAAAAAAAAAEA=</HashCode>
       <FileName>UI\TestMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DevBlog.MainMenu" Collapsed="true">
-    <Position X="9" Y="1.75" Width="1.5" />
+    <Position X="6.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAEBAAEAAAEAAAAAAAAEAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAEBAAEAAAEAAAAAAAAkAAAAAAAAAAI=</HashCode>
       <FileName>UI\MainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="DevBlog.IStorage" Collapsed="true">
-    <Position X="9" Y="3" Width="1.5" />
+  <Class Name="DevBlog.Repository.AuthorCRUD" Collapsed="true">
+    <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAgIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DAL\IStorage.cs</FileName>
+      <HashCode>AAQAAIAgAAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Repository\AuthorCRUD.cs</FileName>
     </TypeIdentifier>
-  </Interface>
+  </Class>
+  <Class Name="DevBlog.Author" Collapsed="true">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAEACAAgAAQBABAAARAAAAAAAAgAAIQAAAAAAM=</HashCode>
+      <FileName>Main\Author.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevBlog.Post" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEQAIAAgEAEAABBAAACAADAAAAhCAASAAABEAA=</HashCode>
+      <FileName>Main\Post.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevBlog.Menu" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>UI\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevBlog.Repository.PostCRUD" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAIIgAAAAAEAAEAAAAAAAAIAAAAAAgAARAQAAAAA=</HashCode>
+      <FileName>Repository\PostCRUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

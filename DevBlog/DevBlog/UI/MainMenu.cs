@@ -18,29 +18,31 @@ namespace DevBlog
                 Console.Clear();
                 Console.WriteLine("Choose test option");
                 Console.WriteLine("[A] View Authors");
+                Console.WriteLine("[C] Create Author");
+                Console.WriteLine("[V] Edit Author");
+                Console.WriteLine("---------------");
                 Console.WriteLine("[P] View Posts");
                 Console.WriteLine("[W] Write Post");
                 Console.WriteLine("[E] Edit Post");
                 Console.WriteLine("[L] Add Link to Post");
+                Console.WriteLine("[D] Delete Post");
+                Console.WriteLine("---------------");
                 Console.WriteLine("[X] Exit");
-
+                
                 string input = Console.ReadLine();
 
                 MenuHelper.Selection choice; // Delegate instantiated
 
                 MenuHelper.GetSelection(input, "a", choice = ViewAuthors);
+                MenuHelper.GetSelection(input, "c", choice = AuthorCRUD.CreateAuthor);
                 MenuHelper.GetSelection(input, "p", choice = ViewAllPosts);
                 MenuHelper.GetSelection(input, "w", choice = PostCRUD.PostMessage);
                 MenuHelper.GetSelection(input, "e", choice = EditPost);
                 MenuHelper.GetSelection(input, "l", choice = AddLinkToPost);
-                // If "s", exit while loop.
+                MenuHelper.GetSelection(input, "d", choice = PostCRUD.DeletePost);
+                MenuHelper.GetSelection(input, "v", choice = AuthorCRUD.Update);
+                // If "x", exit while loop.
                 runMenu = input.ToLower() == "x" ? false : true;
-            }
-
-            runMenu = true;
-            while (runMenu)
-            {
-                Console.Clear();
             }
         }
 

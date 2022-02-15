@@ -46,10 +46,8 @@ namespace DevBlog
             set => _active = value;
         }
 
-        // Constructor
-       
-        internal Author() { }
 
+       
         // Method
         
 

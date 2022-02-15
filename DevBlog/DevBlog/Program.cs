@@ -9,7 +9,7 @@ namespace DevBlog
         static void Main(string[] args)
         {
             Init();
-            
+
             Menu.Run();
             // Lonelyyyy, I'm so lonelyyyyy,
             // I've got nobodyyyyy,
@@ -18,11 +18,11 @@ namespace DevBlog
             Conclude();
         }
 
-        private static void Init()
+        private static async void Init()
         {
             
-            AuthorCRUD.LoadAsync();
-            PostCRUD.LoadAsync();
+            await Task.Run(() => AuthorCRUD.LoadAsync());
+            await Task.Run(() => PostCRUD.LoadAsync());
         }
 
         private static void Conclude()

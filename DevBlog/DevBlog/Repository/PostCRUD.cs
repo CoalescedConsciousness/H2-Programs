@@ -24,8 +24,7 @@ namespace DevBlog.Repository
                     p.Authors = args[3];
                     p.AuthorIDs = args[4];
                     p.Links = args[5];
-                    p.Active = args[6] == "true" ? true : false;
-                    Console.WriteLine(p.AuthorIDs);
+                    p.Active = args[6] == "true";
                     Author a = Author.GetAuthorByID(int.Parse(p.AuthorIDs));
                     a.PostCount++;
                 }
@@ -144,23 +143,21 @@ namespace DevBlog.Repository
 
             foreach (Post post in Post.PostDB)
             {
-                Console.WriteLine(post.ToString());
                 if (currentList.Count == 0 || !currentList.Contains((post.ID).ToString()))
                 {
                     List<string> fields = new List<string>() { "Title", "Body", "Author", "AuthorID", "Links", "Active" };
                     List<string> values = new List<string>() { post.Title, post.Body, post.Authors, post.AuthorIDs, post.Links, post.Active.ToString() };
                     Database.SaveToDatabase(fields, values, "Post");
                 }
-                Console.ReadKey();
             }
         }
 
         /// <summary>
-        /// Loads (async).. WIP
+        /// Loads (async) from persistent database and recreates objects in volatile memory
         /// </summary>
-        public static async void LoadAsync()
+        public static async Task LoadAsync()
         {
-            List<object> x = await Database.GetAllFromDatabase("Post"); // False removes writes to console. True by default.
+            List<object> x = await Database.GetAllFromDatabase("Post", false); // False removes writes to console. True by default.
 
             foreach (List<object> listItem in x)
             {
@@ -170,7 +167,7 @@ namespace DevBlog.Repository
 
 
             }
-            Console.ReadKey();
+            
         }
 
         /// <summary>
@@ -301,6 +298,24 @@ namespace DevBlog.Repository
             else if (p.Links.Split(";").Length == 1) { p.Links.OpenGivenUrl(); }
 
 
+
+        }
+
+        public static void DeletePost()
+        {
+            Console.Clear();
+            Console.WriteLine("Please designate which post you would like to delete:");
+            Database.GetAllFromDatabase("Post");
+            int uInput = int.Parse(Console.ReadLine());
+
+            string query = $"DELETE FROM Post WHERE ID={uInput}";
+
+            try
+            {
+                Database.QueryDatabase(query);
+            }
+            catch (UnableToDelete ex)
+            { Console.WriteLine(ex.Message); }
 
         }
     }

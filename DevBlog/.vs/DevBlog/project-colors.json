@@ -65,7 +65,12 @@
       "ProjectGuid": "117cee92-1402-4d43-84a1-786138f0fc36",
       "DisplayName": "DevBlog.Common",
       "ColorIndex": 11
+    },
+    "73db0340-22b7-462d-8ad7-b6a6474644dd": {
+      "ProjectGuid": "73db0340-22b7-462d-8ad7-b6a6474644dd",
+      "DisplayName": "DevBlogTest",
+      "ColorIndex": 12
     }
   },
-  "NextColorIndex": 12
+  "NextColorIndex": 13
 }

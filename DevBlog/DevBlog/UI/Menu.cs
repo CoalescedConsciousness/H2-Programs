@@ -7,10 +7,10 @@ namespace DevBlog
         /// <summary>
         /// Used to initiate Menus.
         /// </summary>
-        public static void Run()
+        public static async Task Run()
         {
             
-            TestMenu.RunAsync();
+            await TestMenu.RunAsync();
             MainMenu.Run();
         }
         

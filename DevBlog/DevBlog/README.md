@@ -1,5 +1,5 @@
 ﻿## Developer Blog
-### Current Version: __1.0.2__
+### Current Version: __1.1.0__
 ### Description:
 Small program intended to act as a proto-structural backbone (i.e. back-end) for an eventual DevBlog.
 As the main intended feature here is that of the functionality of such a program, the use of a UI has been foregone, in exchange for greater emphasis on logic structure and data integrity.
@@ -20,6 +20,10 @@ As the main intended feature here is that of the functionality of such a program
         I.e., they handle [C]reation of records, but inherently involve Storage, while Storage is most capable of accessing the permanent data storage (SQL DB) for reading, updates, and deletions/erasures.
 
 ### Update notes:
+- 1.1.0
+  - Finetuned certain methods throughout
+  - Added unittest in order to validate certain commands and executions.
+
 - 1.0.2
   - First pass for documentation added.
   - Slight modifications and clean-up in regards to CRUD methods and their implementation and functionality in terms of volatile and permanent storage options.

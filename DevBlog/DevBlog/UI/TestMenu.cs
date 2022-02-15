@@ -9,7 +9,7 @@ namespace DevBlog
         /// <summary>
         /// Method for initating Test menu (async).
         /// </summary>
-        internal static async void RunAsync()
+        internal static async Task RunAsync()
         {
             bool runMenu = true;
             while (runMenu)
@@ -23,12 +23,14 @@ namespace DevBlog
 
                 string input = Console.ReadLine();
                 
-                MenuHelper.SelectionAsync choice; // Delegate instantiated
+                MenuHelper.SelectionAsync choiceAsync; // Delegate instantiated
+                MenuHelper.Selection choice;
 
                
-                await MenuHelper.GetSelectionAsync(input, "b", choice = ClearDatabase);
-                await MenuHelper.GetSelectionAsync(input, "r", choice = SelectTable);
-                await MenuHelper.GetSelectionAsync(input, "c", choice = CreateTestData);
+                MenuHelper.GetSelection(input, "b", choice = ClearDatabase);
+                MenuHelper.GetSelection(input, "r", choice = SelectTable);
+                
+                MenuHelper.GetSelectionAsync(input, "c", choiceAsync = CreateTestData);
 
                 // If "s", exit while loop.
                 runMenu = input.ToLower() == "s" ? false : true;
@@ -36,7 +38,7 @@ namespace DevBlog
         }
 
         // Various selections, note it is the GetSelection 
-        private static async Task SelectTable()
+        private static void SelectTable()
         {
             Console.Clear();
             Console.WriteLine("Select Table:");
@@ -52,7 +54,7 @@ namespace DevBlog
             Console.ReadKey();
 
         }
-        public static async Task ClearDatabase()
+        public static void ClearDatabase()
         {
             string query =
                 "IF EXISTS(SELECT 1 FROM sys.Tables WHERE Name= N'Author' AND Type = N'U') BEGIN DROP TABLE Author END;" +
@@ -72,28 +74,35 @@ namespace DevBlog
 
         public static async Task CreateTestData()
         {
-            
-            Author author = TestAuthorCreate();
-            Console.WriteLine("Creating Author");
-            
-            Post post = TestPostCreate(author);
-            Console.WriteLine("Creating Test Data");
+            List<Task> tasks = new List<Task>();
+            Console.WriteLine("Creating Author(s)");
+            Task a = TestAuthorCreate();
 
-            Console.WriteLine($"{author.Name} wrote the post '{post.Title}', reading:\n\n{post.Body}");
+            Console.WriteLine("Creating Post(s)");
+            Task b = TestPostCreate();
 
+            tasks.Add(a);
+            tasks.Add(b);
+
+            Task.WaitAll(tasks.ToArray());
+            Console.WriteLine("Test data created.");
+            Console.ReadLine();
         }
-        private static Author TestAuthorCreate()
+        private static async Task TestAuthorCreate()
         {
-            return AuthorCRUD.CreateAuthor(new string[] { "Test", "Testhest@haster.ko" });
+            _ = AuthorCRUD.CreateAuthor(new string[] { "Mads Madsen", "Testhest@haster.ko" });
+            _ = AuthorCRUD.CreateAuthor(new string[] { "Jens Jensen", "Existential@crisis.oh"});
+            _ = AuthorCRUD.CreateAuthor(new string[] { "Anders Andersen", "blackjack_and_hookers@own_casino.bender" });
+            Console.WriteLine("Created Authors");
         }
 
-        private static Post TestPostCreate(Author author)
+        private static async Task TestPostCreate()
         {
-            string[] a = new string[] { author.ID.ToString(), "Test", "Tast" };
-            Post p = PostCRUD.CreatePost(a);
-            return p;
-            //return PostCRUD.CreatePost(new string[] { author.ID.ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor", "Test Title" });
-            
+            Author a = Author.GetAuthorByName("Mads Madsen");
+            PostCRUD.CreatePost(new string[] { a.ID.ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor", "Test Title" });
+            PostCRUD.CreatePost(new string[] { a.ID.ToString(), "Lisa needs braces", "Dental plan" });
+            Author b = Author.GetAuthorByName("Jens Jensen");
+            PostCRUD.CreatePost(new string[] { b.ID.ToString(), "Something something", "volatile" });
         }
     }
 }

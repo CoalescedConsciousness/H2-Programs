@@ -22,17 +22,16 @@ namespace DevBlog.Repository
                 author.PostCount = int.Parse(args[3]);
                 author.Active = bool.Parse(args[4]);
             }
-            if (args.Length == 2)
+            else if (args.Length == 2)
             {
                 author.ID = DatabaseHelper.GetNextID("Author");
                 author.Name = args[0];
                 author.Email = args[1];
-            }
-            if (args.Length == 0)
-            {
-                author.ID = DatabaseHelper.GetNextID("Author");
                 author.Active = true;
-                author.PostCount = 0;
+            }
+            else
+            {
+                throw new Exception("Invalid arguments");
             }
 
             Author.AuthorDB.Add(author);
@@ -41,6 +40,21 @@ namespace DevBlog.Repository
 
         }
 
+        public static void CreateAuthor()
+        {
+            Console.Clear();
+            Author a = new Author();
+            Console.WriteLine("Author name: ");
+            a.Name = Console.ReadLine();
+            Console.WriteLine("Author email: ");
+            a.Email = Console.ReadLine();
+            a.ID = DatabaseHelper.GetNextID("Author");
+            a.Active = true;
+            a.PostCount = 0;
+
+            Author.AuthorDB.Add(a);
+            Save();
+        }
         /// <summary>
         /// Reads all Author objects in current local storage.
         /// </summary>
@@ -72,12 +86,12 @@ namespace DevBlog.Repository
         }
 
         /// <summary>
-        /// WIP
+        /// Loads (async) from persistent database and recreates object in volatile memory
         /// </summary>
         public static async Task LoadAsync()
         {
 
-            List<object> x = await Database.GetAllFromDatabase("Author"); // False removes writes to console. True by default.
+            List<object> x = await Database.GetAllFromDatabase("Author", false); // False removes writes to console. True by default.
 
             foreach (List<object> listItem in x)
             {
@@ -85,7 +99,7 @@ namespace DevBlog.Repository
                 AuthorCRUD.CreateAuthor(vs);
                 
             }
-            
+
         }
 
         /// <summary>
@@ -93,8 +107,11 @@ namespace DevBlog.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <exception cref="FormatException"></exception>
-        public static void Update(int id)
+        public static void Update()
         {
+            Console.WriteLine("Please select the Author you wish to edit: ");
+            Database.GetAllFromDatabase("Author");
+            int id = int.Parse(Console.ReadLine());
             Author target = Author.AuthorDB.Find(x => x.ID == id);
             Console.WriteLine(target.Name);
             Console.WriteLine("Please select the field you wish to edit (name, email, active)");
