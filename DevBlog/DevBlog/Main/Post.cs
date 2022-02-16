@@ -81,10 +81,16 @@ namespace DevBlog
         public override string ToString()
         {
             string links = default;
-            for (int i = 0; i < Links.Split(";").Length; i++)
+            if (Links.Split(";").Length > 1)
             {
-                links += $"\n{i}- {Links.Split(";")[i]}";
+                for (int i = 0; i < Links.Split(";").Length; i++)
+                {
+                    links += $"\n          {i}- {Links.Split(";")[i]}";
+                }
             }
+            else
+            { links = ""; }
+            
             string result =
                 $"-- Title: {Title}\n" +
                 $"-- Body: {Body}\n" +
@@ -102,7 +108,8 @@ namespace DevBlog
         /// </summary>
         public static void ReadAll()
         {
-            Console.WriteLine("\n Reading all Posts: ");
+            Console.Clear();
+            Console.WriteLine("Reading all Posts: \n");
 
             foreach (Post post in Post.PostDB)
             {

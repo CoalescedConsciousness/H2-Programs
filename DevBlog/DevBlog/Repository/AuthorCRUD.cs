@@ -133,8 +133,11 @@ namespace DevBlog.Repository
                 };
             }
 
-            string query = $"SELECT * FROM POST WHERE ID = {id} " +
-                $"SET {field.UpperFirstChar()} = {newData}";
+            string query =
+                $"UPDATE Author " +
+                //$"SELECT * FROM Author WHERE ID = {id} " +
+                $"SET {field.UpperFirstChar()} = '{newData}' " +
+                $"WHERE ID = {id}";
             Database.QueryDatabase(query);
         }
 

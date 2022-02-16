@@ -11,7 +11,8 @@ namespace Common
         /// <returns></returns>
         public static string UpperFirstChar(this string input)
         {
-            return input.ToString().ToUpper() + input.Substring(1);
+            string nString = input[0].ToString().ToUpper() + input.Substring(1);
+            return nString;
         }
 
         /// <summary>

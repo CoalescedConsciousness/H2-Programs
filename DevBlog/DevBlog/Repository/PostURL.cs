@@ -88,11 +88,11 @@ namespace DevBlog.Repository
                 Console.WriteLine("Please select the URL you wish to open:\n");
                 for (int i = 0; i < p.Links.Split(";").Length; i++)
                 {
-                    Console.WriteLine($"{i}: {p.Links.Split(";")[i]}");
+                    Console.WriteLine($"{i+1}: {p.Links.Split(";")[i]}");
                 }
                 int input = int.Parse(Console.ReadLine());
 
-                p.Links.Split(";")[input].OpenGivenUrl();
+                p.Links.Split(";")[input-1].OpenGivenUrl();
             }
             else if (p.Links.Split(";").Length == 1) { p.Links.OpenGivenUrl(); }
         }

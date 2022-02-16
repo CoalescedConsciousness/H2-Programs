@@ -24,7 +24,7 @@ namespace DevBlog.Repository
                     p.Authors = args[3];
                     p.AuthorIDs = args[4];
                     p.Links = args[5];
-                    p.Active = args[6] == "true";
+                    p.Active = args[6] == "True";
                     Author a = Author.GetAuthorByID(int.Parse(p.AuthorIDs));
                     AuthorCRUD.UpdatePostCount(a);
                 }
@@ -39,7 +39,6 @@ namespace DevBlog.Repository
                     AuthorCRUD.UpdatePostCount(a);
 
                 }
-
                 SaveToBoth(p);
                 return p;
             }
@@ -71,10 +70,10 @@ namespace DevBlog.Repository
             {
                 Console.WriteLine($"{x.First} {x.Second}");
             }
-            foreach (Author x in Author.AuthorDB)
-            {
-                Console.WriteLine(x.Name, x.ID);
-            }
+            //foreach (Author x in Author.AuthorDB)
+            //{
+            //    Console.WriteLine(x.Name, x.ID);
+            //}
             string input = Console.ReadLine();
             int aInput = default;
             try
