@@ -1,5 +1,5 @@
 ﻿## Developer Blog
-### Current Version: __1.1.1__
+### Current Version: __1.1.2__
 ### Description:
 Small program intended to act as a proto-structural backbone (i.e. back-end) for an eventual DevBlog.
 As the main intended feature here is that of the functionality of such a program, the use of a UI has been (mostly) foregone, in exchange for greater emphasis on logic structure and data integrity.
@@ -25,11 +25,15 @@ As the main intended feature here is that of the functionality of such a program
         I.e., they handle [C]reation of records, but inherently involve Storage, while Storage is most capable of accessing the permanent data storage (SQL DB) for reading, updates, and deletions/erasures.
 
 ### Update notes:
+- 1.1.2
+  - Updated UML diagram manually as VS integration was woefully inadequate. And cumbersome.
+
 - 1.1.1
   - General cleanup
   - Added Delete (toggle active) method for Author, renamed Erase (remove from database) method for Post for better clarity.
 
 - 1.1.0
+  - Incremented minor change version in order to indicate program is considered ready for viewing/useage.
   - Finetuned certain methods throughout
   - Added unittest in order to validate certain commands and executions.
 

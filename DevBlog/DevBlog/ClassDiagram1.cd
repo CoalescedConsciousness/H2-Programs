@@ -1,53 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
-  <Class Name="DevBlog.TestMenu" Collapsed="true">
-    <Position X="2.75" Y="2.75" Width="1.5" />
+  <Class Name="DevBlog.Author" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAEAAAAEIAAAAAAQAAAAAAAAAAAAEA=</HashCode>
-      <FileName>UI\TestMenu.cs</FileName>
+      <HashCode>AAgAIAAEACAAgAAUFABAAARAAAAAAAAgAAIQAAAAAAM=</HashCode>
+      <FileName>Main\Author.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevBlog.Post" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEQAIAAgEAEEABBAAACAADAAAAhCAASAAABEAA=</HashCode>
+      <FileName>Main\Post.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DevBlog.MainMenu" Collapsed="true">
-    <Position X="6.25" Y="0.75" Width="1.5" />
+    <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEBAAEAAAEAAAAAAAAkAAAAAAAAAAI=</HashCode>
       <FileName>UI\MainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DevBlog.Repository.AuthorCRUD" Collapsed="true">
-    <Position X="4.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAIAgAAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>Repository\AuthorCRUD.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DevBlog.Author" Collapsed="true">
-    <Position X="2.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAIAAEACAAgAAQBABAAARAAAAAAAAgAAIQAAAAAAM=</HashCode>
-      <FileName>Main\Author.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DevBlog.Post" Collapsed="true">
-    <Position X="4.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQAAAAEQAIAAgEAEAABBAAACAADAAAAhCAASAAABEAA=</HashCode>
-      <FileName>Main\Post.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DevBlog.Menu" Collapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>UI\Menu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DevBlog.Repository.PostCRUD" Collapsed="true">
-    <Position X="6.25" Y="1.75" Width="1.5" />
+  <Class Name="DevBlog.TestMenu" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQQAIIgAAAAAEAAEAAAAAAAAIAAAAAAgAARAQAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAEAAAAEIAAAAAAQAAAAAAAAAAAAEA=</HashCode>
+      <FileName>UI\TestMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevBlog.Repository.AuthorCRUD" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAIAgAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\AuthorCRUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DevBlog.Repository.PostCRUD" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAIAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Repository\PostCRUD.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="DevBlog.Repository.PostURL" Collapsed="true">
+    <Position X="9.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAgAABAQAAAAA=</HashCode>
+      <FileName>Repository\PostURL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Common.Database" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.DatabaseHelper" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.UnableToDelete" Collapsed="true">
+    <Position X="12" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.Helper" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.MenuHelper" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

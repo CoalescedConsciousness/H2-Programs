@@ -85,7 +85,7 @@ namespace DevBlog
             {
                 for (int i = 0; i < Links.Split(";").Length; i++)
                 {
-                    links += $"\n          {i}- {Links.Split(";")[i]}";
+                    links += $"\n          {i+1}- {Links.Split(";")[i]}";
                 }
             }
             else
