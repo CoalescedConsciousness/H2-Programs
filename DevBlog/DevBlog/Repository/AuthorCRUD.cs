@@ -28,6 +28,7 @@ namespace DevBlog.Repository
                 author.Name = args[0];
                 author.Email = args[1];
                 author.Active = true;
+                author.PostCount = 0;
             }
             else
             {
@@ -55,17 +56,7 @@ namespace DevBlog.Repository
             Author.AuthorDB.Add(a);
             Save();
         }
-        /// <summary>
-        /// Reads all Author objects in current local storage.
-        /// </summary>
-        public static async void ReadAllAsync()
-        {
-            foreach (Author a in Author.AuthorDB)
-            {
-                Console.WriteLine("################################");
-                Console.WriteLine(a.ToString());
-            }
-        }
+        
 
         /// <summary>
         /// Saves all Author objects to "external" permanent storage
@@ -100,6 +91,16 @@ namespace DevBlog.Repository
                 
             }
 
+        }
+
+        public static void UpdatePostCount(Author a)
+        {
+            int newCount = ++Author.AuthorDB.First(x => x.ID == a.ID).PostCount;
+            string query =
+                "UPDATE Author " +
+                $"SET PostCount = {newCount} " +
+                $"WHERE ID = {a.ID}";
+            Database.QueryDatabase(query);
         }
 
         /// <summary>

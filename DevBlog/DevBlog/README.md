@@ -1,25 +1,34 @@
 ﻿## Developer Blog
-### Current Version: __1.1.0__
+### Current Version: __1.1.1__
 ### Description:
 Small program intended to act as a proto-structural backbone (i.e. back-end) for an eventual DevBlog.
-As the main intended feature here is that of the functionality of such a program, the use of a UI has been foregone, in exchange for greater emphasis on logic structure and data integrity.
+As the main intended feature here is that of the functionality of such a program, the use of a UI has been (mostly) foregone, in exchange for greater emphasis on logic structure and data integrity.
 
 ### Features:
-- Methods for creating Authors and Posts 
-- Storing this data temporarily in local "Storage"
-- Transfering this locally stored data to (imagined) external database storage.
+- Methods for creating Authors and Posts (CreateAuthor, CreatePost)
+- Methods for editing Authors and Posts (Update)
+- Methods for viewing Authors and Posts (ReadAll (volatile), GetAllFromDatabase (persistent))
+- Method for deleting Posts (ErasePost)
+- Method for toggling Authors (ToggleAuthor)
+- Various helper methods for data manipulation (URL, Database, Menu)
+- Storing this data temporarily in volatile memory
+- Transfering this data from/to volatile memory to/from persistent memory, using a SQL database.
   - Often these two are done simultaneously, so that one acts as a data-integrity support, while the other (local) storage facilitates better theoretical response times.
 
 ### Deprecated Features:
 - For the sake of transparency;
   - ID Handler class (responsibility relinquished to SQL database)
-  - Exceptions, for the moment being, these Exceptions are no longer being employed.
+  - Some Exceptions
   - CRUD Interface to enforce data integritry across classes intended to act as manageable objects in the program (Authors, Posts)
     - Deprecated to IStorage interface dur to SQL DB integration, as any CRUD performed on a live instance of the program, would have to be mirrored in the Storage class anyway.
       - By limiting this functionality to the former, responsibility is placed in a single place, while the Author and Post classes mostly function as scaffolding;
         I.e., they handle [C]reation of records, but inherently involve Storage, while Storage is most capable of accessing the permanent data storage (SQL DB) for reading, updates, and deletions/erasures.
 
 ### Update notes:
+- 1.1.1
+  - General cleanup
+  - Added Delete (toggle active) method for Author, renamed Erase (remove from database) method for Post for better clarity.
+
 - 1.1.0
   - Finetuned certain methods throughout
   - Added unittest in order to validate certain commands and executions.

@@ -26,7 +26,7 @@ namespace DevBlog.Repository
                     p.Links = args[5];
                     p.Active = args[6] == "true";
                     Author a = Author.GetAuthorByID(int.Parse(p.AuthorIDs));
-                    a.PostCount++;
+                    AuthorCRUD.UpdatePostCount(a);
                 }
                 if (args.Length == 3)
                 {
@@ -36,7 +36,7 @@ namespace DevBlog.Repository
                     p.Authors += a.Name;
                     p.AuthorIDs += a.ID;
                     p.Active = true;
-                    a.PostCount++;
+                    AuthorCRUD.UpdatePostCount(a);
 
                 }
 
@@ -50,16 +50,16 @@ namespace DevBlog.Repository
         /// Small method to ensure saves occur to both volatile and permanent storage.
         /// </summary>
         /// <param name="a"></param>
-        internal static void SaveToBoth(Post a)
+        internal static void SaveToBoth(Post p)
         {
-            Post.PostDB.Add(a);
+            Post.PostDB.Add(p);
             Save();
         }
 
         /// <summary>
-        /// Method for UI-based post creation, which ultimately calls the CreatePost method.
+        /// Method for UI-based post creation, which ultimately calls the (overloaded) CreatePost method.
         /// </summary>
-        public static void PostMessage()
+        public static void CreatePost()
         {
             Console.Clear();
             Console.WriteLine("Please designate which Author is writing:");
@@ -104,35 +104,7 @@ namespace DevBlog.Repository
         }
 
 
-        /// <summary>
-        /// Reads all Posts currently stored in volatile storage (ASYNC).
-        /// </summary>
-        public static void ReadAll()
-        {
-            Console.WriteLine("\n Reading all Posts: ");
-
-            foreach (Post post in Post.PostDB)
-            {
-                Console.WriteLine("########################");
-                Console.WriteLine(post.ToString());
-            }
-
-        }
-
-        /// <summary>
-        /// Reads all posts currently stored in volatile storage (sync)
-        /// </summary>
-        public static async void ReadAllAsync()
-        {
-            Console.WriteLine("\n Reading all Posts: ");
-
-            foreach (Post post in Post.PostDB)
-            {
-                Console.WriteLine("########################");
-                Console.WriteLine(post.ToString());
-            }
-
-        }
+        
 
         /// <summary>
         /// Saves Posts to permanent storage.
@@ -206,105 +178,12 @@ namespace DevBlog.Repository
             Database.QueryDatabase(query);
         }
 
-        /// <summary>
-        /// Helper-method used to update record links.
-        /// </summary>
-        /// <param name="target"></param>
-        private static void UpdateRecordLinks(Post target)
-        {
-            string query =
-                $"UPDATE Post " +
-                $"SET [Links] = '{target.Links}' " +
-                $"WHERE ID = {target.ID} ";
-            Database.QueryDatabase(query);
-        }
+        
 
-        /// <summary>
-        /// Adds a specified URL to the post method.
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="url"></param>
-        public static void AddURL(Post target, string url)
-        {
-            bool addUrl = true;
-            while (addUrl)
-            {
-                if (!string.IsNullOrEmpty(url))
-                {
-                    if (target.Links == "")
-                    {
-                        target.Links += url;
-                    }
-                    else if (target.Links != "")
-                    {
-                        target.Links += $";{url}";
-                    }
-                    Console.WriteLine("Do you wish to add another URL? [y/n]");
-                    string input = Console.ReadLine();
-
-                    if (input.ToLower() != "y")
-                    { addUrl = false; }
-                }
-            }
-
-            UpdateRecordLinks(target);
-        }
-
-        /// <summary>
-        /// Removes URL form specified Post
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="uInput"></param>
-        public static void RemoveURL(Post target, int uInput)
-        {
-            if (!target.Links.Contains(";") && uInput == 1)
-            {
-                target.Links = "";
-            }
-            else
-            {
-                if (uInput != target.Links.Split(";").Length)
-                {
-                    target.Links.Replace($"{target.Links.Split(";")[uInput]};", "");
-                }
-                else
-                {
-                    target.Links.Replace($";{target.Links.Split(";")[uInput]}", "");
-                }
-            }
-
-            UpdateRecordLinks(target);
-        }
-
-        /// <summary>
-        /// Method used to open URL
-        /// </summary>
-        /// <param name="id"></param>
-        public static void OpenURL(int id)
-        {
-            Post p = Post.GetPost(id);
-
-            if (p.Links.Split(";").Length > 1)
-            {
-                Console.WriteLine("Please select the URL you wish to open:\n");
-                for (int i = 0; i < p.Links.Split(";").Length; i++)
-                {
-                    Console.WriteLine($"{i}: {p.Links.Split(";")[i]}");
-                }
-                int input = int.Parse(Console.ReadLine());
-
-                p.Links.Split(";")[input].OpenGivenUrl();
-            }
-            else if (p.Links.Split(";").Length == 1) { p.Links.OpenGivenUrl(); }
-
-
-
-        }
-
-        public static void DeletePost()
+        public static void ErasePost()
         {
             Console.Clear();
-            Console.WriteLine("Please designate which post you would like to delete:");
+            Console.WriteLine("Please designate which post you would like to erase:");
             Database.GetAllFromDatabase("Post");
             int uInput = int.Parse(Console.ReadLine());
 

@@ -16,31 +16,42 @@ namespace DevBlog
             while (runMenu)
             {
                 Console.Clear();
-                Console.WriteLine("Choose test option");
-                Console.WriteLine("[A] View Authors");
-                Console.WriteLine("[C] Create Author");
-                Console.WriteLine("[V] Edit Author");
+                Console.WriteLine("### MAIN MENU ###");
+                Console.WriteLine();
+                Console.WriteLine("[AV] View Authors");
+                Console.WriteLine("[AC] Create Author");
+                Console.WriteLine("[AE] Edit Author");
+                Console.WriteLine("[AM] View Authors in volatile memory");
+                Console.WriteLine("[AT] Toggle Author");
                 Console.WriteLine("---------------");
-                Console.WriteLine("[P] View Posts");
-                Console.WriteLine("[W] Write Post");
-                Console.WriteLine("[E] Edit Post");
-                Console.WriteLine("[L] Add Link to Post");
-                Console.WriteLine("[D] Delete Post");
+                Console.WriteLine("[PV] View Posts");
+                Console.WriteLine("[PW] Write Post");
+                Console.WriteLine("[PE] Edit Post");
+                Console.WriteLine("[PL] Add Link to Post");
+                Console.WriteLine("[PD] Erase Post");
+                Console.WriteLine("[PM] View Posts in volatile memory");
                 Console.WriteLine("---------------");
+                Console.WriteLine();
                 Console.WriteLine("[X] Exit");
                 
                 string input = Console.ReadLine();
 
                 MenuHelper.Selection choice; // Delegate instantiated
 
-                MenuHelper.GetSelection(input, "a", choice = ViewAuthors);
-                MenuHelper.GetSelection(input, "c", choice = AuthorCRUD.CreateAuthor);
-                MenuHelper.GetSelection(input, "p", choice = ViewAllPosts);
-                MenuHelper.GetSelection(input, "w", choice = PostCRUD.PostMessage);
-                MenuHelper.GetSelection(input, "e", choice = EditPost);
-                MenuHelper.GetSelection(input, "l", choice = AddLinkToPost);
-                MenuHelper.GetSelection(input, "d", choice = PostCRUD.DeletePost);
-                MenuHelper.GetSelection(input, "v", choice = AuthorCRUD.Update);
+                // Author
+                MenuHelper.GetSelection(input, "av", choice = ViewAuthors);
+                MenuHelper.GetSelection(input, "ac", choice = AuthorCRUD.CreateAuthor);
+                MenuHelper.GetSelection(input, "ae", choice = AuthorCRUD.Update);
+                MenuHelper.GetSelection(input, "am", choice = Author.ReadAll);
+                MenuHelper.GetSelection(input, "at", choice = Author.ToggleAuthor);
+
+                // Posts
+                MenuHelper.GetSelection(input, "pv", choice = ViewAllPosts);
+                MenuHelper.GetSelection(input, "pw", choice = PostCRUD.CreatePost);
+                MenuHelper.GetSelection(input, "pe", choice = EditPost);
+                MenuHelper.GetSelection(input, "pl", choice = AddLinkToPost);
+                MenuHelper.GetSelection(input, "pd", choice = PostCRUD.ErasePost);
+                MenuHelper.GetSelection(input, "pm", choice = Post.ReadAll);
                 // If "x", exit while loop.
                 runMenu = input.ToLower() == "x" ? false : true;
             }
@@ -73,7 +84,7 @@ namespace DevBlog
 
                 if (Console.ReadLine().ToLower() == "y")
                 {
-                    PostCRUD.OpenURL(result);
+                    PostURL.OpenURL(result);
                 }
                 return true;
             }
@@ -105,10 +116,10 @@ namespace DevBlog
                 Console.WriteLine("Please select one:");
                 Console.WriteLine("[A] Add new URL");
                 Console.WriteLine("[R] Remove existing URL");
-                Console.WriteLine("Please enter a valid URL:");
                 string urlChoice = Console.ReadLine();
+                Console.WriteLine();
                 
-                UpdateURL(result, urlChoice); // Split this functino for management and clarity purposes.
+                UpdateURL(result, urlChoice); // Split this function for management and clarity purposes.
             }
         }
         public static void UpdateURL(int id, string input)
@@ -120,7 +131,7 @@ namespace DevBlog
             {
                 Console.WriteLine("Please designate the URL you want to add:");
                 string newUrl = Console.ReadLine();
-                PostCRUD.AddURL(target, newUrl);
+                PostURL.AddURL(target, newUrl);
             }
             
             //// Remove URL
@@ -142,7 +153,7 @@ namespace DevBlog
                 }
                 int uInput = Console.Read();
 
-                PostCRUD.RemoveURL(target, uInput);
+                PostURL.RemoveURL(target, uInput);
                 
 
             }

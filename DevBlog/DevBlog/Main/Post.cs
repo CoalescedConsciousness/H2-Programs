@@ -97,6 +97,24 @@ namespace DevBlog
             return result;
         }
 
+        /// <summary>
+        /// Reads all Posts currently stored in volatile storage.
+        /// </summary>
+        public static void ReadAll()
+        {
+            Console.WriteLine("\n Reading all Posts: ");
+
+            foreach (Post post in Post.PostDB)
+            {
+                if (post.Active == true)
+                {
+                    Console.WriteLine("########################");
+                    Console.WriteLine(post.ToString());
+                }
+            }
+            Console.ReadKey();
+        }
+
 
     }
 }

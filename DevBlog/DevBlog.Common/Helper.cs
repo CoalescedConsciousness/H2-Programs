@@ -21,6 +21,7 @@ namespace Common
         public static void OpenGivenUrl(this string input)
         {
             Process.Start(new ProcessStartInfo("cmd", $"/c start {input}"));
+            Console.Clear();
         }
     }
 }

@@ -59,7 +59,7 @@ namespace DevBlog
             string query =
                 "IF EXISTS(SELECT 1 FROM sys.Tables WHERE Name= N'Author' AND Type = N'U') BEGIN DROP TABLE Author END;" +
                 "IF EXISTS(SELECT 1 FROM sys.Tables WHERE Name= N'Post' AND Type = N'U') BEGIN DROP TABLE Post END;" +
-                "CREATE TABLE [dbo].Author (ID int NOT NULL IDENTITY(1,1) PRIMARY KEY, Name varchar(50) NULL, Email varchar(50) NULL, PostCount int NULL, Active varchar(5) NOT NULL);" +
+                "CREATE TABLE [dbo].Author (ID int NOT NULL IDENTITY(1,1) PRIMARY KEY, Name varchar(50) NULL, Email varchar(50) NULL, PostCount int NULL, Active bit NOT NULL);" +
                 "CREATE TABLE [dbo].Post (ID int NOT NULL IDENTITY(1,1) PRIMARY KEY, Title varchar(50) NULL, Body varchar(500) NULL, Author varchar(50) NOT NULL, AuthorID varchar(5) NULL, Links varchar(50) NULL, Active bit NULL);";
             //"INSERT INTO [dbo].Author (Name, Email, PostCount, Active)" +
             //"VALUES ('Test', 'Test@test.dk', '5', 'False');" +
@@ -102,7 +102,10 @@ namespace DevBlog
             PostCRUD.CreatePost(new string[] { a.ID.ToString(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor", "Test Title" });
             PostCRUD.CreatePost(new string[] { a.ID.ToString(), "Lisa needs braces", "Dental plan" });
             Author b = Author.GetAuthorByName("Jens Jensen");
-            PostCRUD.CreatePost(new string[] { b.ID.ToString(), "Something something", "volatile" });
+            PostCRUD.CreatePost(new string[] { DatabaseHelper.GetNextID("Post").ToString(), "Something something", "volatile", b.Name, b.ID.ToString(), "www.google.com", "true" });
+
+
+            
         }
     }
 }
