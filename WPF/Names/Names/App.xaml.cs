@@ -13,5 +13,10 @@ namespace Names
     /// </summary>
     public partial class App : Application
     {
+        private void startApp(object sender, StartupEventArgs e)
+        {
+            MainWindow window = new();
+            window.Show();
+        }
     }
 }

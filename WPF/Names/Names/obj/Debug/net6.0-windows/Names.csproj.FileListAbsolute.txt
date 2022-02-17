@@ -19,3 +19,5 @@ C:\Users\Santi\Desktop\EUC\H2\H2-Programs\WPF\Names\Names\obj\Debug\net6.0-windo
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\WPF\Names\Names\obj\Debug\net6.0-windows\ref\Names.dll
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\WPF\Names\Names\obj\Debug\net6.0-windows\Names.pdb
 C:\Users\Santi\Desktop\EUC\H2\H2-Programs\WPF\Names\Names\obj\Debug\net6.0-windows\Names.genruntimeconfig.cache
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\WPF\Names\Names\obj\Debug\net6.0-windows\Options.g.cs
+C:\Users\Santi\Desktop\EUC\H2\H2-Programs\WPF\Names\Names\obj\Debug\net6.0-windows\Options.baml
