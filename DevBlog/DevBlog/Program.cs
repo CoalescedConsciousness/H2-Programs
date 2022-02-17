@@ -20,10 +20,10 @@ namespace DevBlog
 
         private static async void Init()
         {
-            AuthorCRUD.LoadAsync();
-            PostCRUD.LoadAsync();
-            //await Task.Run(() => AuthorCRUD.LoadAsync());
-            //await Task.Run(() => PostCRUD.LoadAsync());
+            //AuthorCRUD.LoadAsync();
+            //PostCRUD.LoadAsync();
+            await Task.Run(() => AuthorCRUD.LoadAsync());
+            await Task.Run(() => PostCRUD.LoadAsync());
         }
 
         private static void Conclude()
