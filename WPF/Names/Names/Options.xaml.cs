@@ -34,5 +34,10 @@ namespace Names
         {
 
         }
+
+        private void saveAndClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

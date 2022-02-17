@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Names"
         mc:Ignorable="d"
-        Title="Options" Height="250" Width="350">
+        Title="Options" Height="250" Width="400">
     <Grid>
         <Grid.Resources>
             <Style x:Key="newStyle" TargetType="Label">
@@ -34,8 +34,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <Label>Max Entries:</Label>
-                <Label>Click to Delete:</Label>
+                <Label Target="{Binding ElementName=maxEntries}" Content="_Max Entries:"/>
+                <Label Target="{Binding ElementName=clickToDelete}" Content="_Click to Delete:"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <TextBox x:Name="maxEntries" PreviewTextInput="NumberInput" Margin="0,5"/>
@@ -43,7 +43,8 @@
             </StackPanel>
         </Grid>
 
-        
-        
+        <Button x:Name="saveAndClose" Click="saveAndClose_Click" Grid.Column="1" Grid.Row="2" Content="Save and Close" Margin="75,0,10,10" Width="90"/>
+
+
     </Grid>
 </Window>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Names
 {
@@ -23,6 +24,8 @@ namespace Names
     public partial class MainWindow : Window
     {
         public int MaxEntries { get; set; }
+
+        const string filePath = @"C:\Users\Santi\Desktop\EUC\H2\H2-Programs\WPF\Names\names.txt";
         public MainWindow()
         {
             InitializeComponent();
@@ -85,6 +88,27 @@ namespace Names
         {
             Options opt = new();
             opt.Show();
+        }
+
+        private void ButtonSaveList_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> saveList = new();
+            foreach (string name in lstNames.Items)
+            {
+                saveList.Add(name);
+            }
+
+            File.WriteAllLines(filePath, saveList);
+            MessageBox.Show("Names saved!");
+        }
+
+        private void ButtonLoadList_Click(object sender, RoutedEventArgs e)
+        {
+            string[] loadFile = File.ReadAllLines(filePath);
+            foreach (string name in loadFile)
+            {
+                lstNames.Items.Add((string)name);
+            }
         }
     }
 }

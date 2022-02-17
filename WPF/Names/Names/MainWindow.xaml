@@ -5,19 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Names"
         mc:Ignorable="d"
-        Title="Names" Height="530" Width="260">
+        Title="{Binding Path=Text, ElementName=txtTopic}" Height="530" Width="350">
     
     <Window.Resources>
         <Style TargetType="Label">
             <Setter Property="Grid.ColumnSpan" Value="2"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Arial"/>
         </Style>
     </Window.Resources>
     
     <Grid Margin="10">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -26,7 +28,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label>Names</Label>
+        <Label Content="{Binding Path=Text, ElementName=txtTopic}"/>
         <ListBox Grid.Row="1" Height="Auto" x:Name="lstNames" MouseUp='DelAll_UpClick'/>
 
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0,0,0">
@@ -36,8 +38,23 @@
             <Button x:Name="btnDel" Margin="0,5,0,0" Click="ButtonDelName_Click">Delete Name</Button>
             <Button x:Name="btnRandom" Margin="0,5,0,0" Click="ButtonRandomize_Click">Randomize</Button>
             <Button x:Name="btnOptions" Margin="0,5,0,0" Click="ButtonOpenOptions_Click">Options</Button>
-            <Label>Max names:</Label>
-            <TextBox x:Name="boxNumber" Margin="0,5,0,0"  PreviewTextInput="chkNumberInput"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" x:Name="standAlone" Grid.Column="0" Grid.ColumnSpan="1" FontSize="12">Topic:</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtTopic" Text=""/>
+                <Button Grid.Row="1" Grid.Column="0" Content="Save List" Margin="5,5" Click="ButtonSaveList_Click"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="Load List" Margin="5,5" Click="ButtonLoadList_Click"/>
+            </Grid>
+            
         </StackPanel>
     </Grid>
 </Window>
