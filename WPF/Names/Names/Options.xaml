@@ -18,16 +18,17 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="115"/>
         </Grid.RowDefinitions>
 
-        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="0" Grid.ColumnSpan="4"/>
-        <Label Style="{StaticResource newStyle}">Options</Label>
-        
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <Label Style="{StaticResource newStyle}" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.RowSpan="2">Options</Label>
+
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -43,7 +44,7 @@
             </StackPanel>
         </Grid>
 
-        <Button x:Name="saveAndClose" Click="saveAndClose_Click" Grid.Column="1" Grid.Row="2" Content="Save and Close" Margin="75,0,10,10" Width="90"/>
+        <Button x:Name="saveAndClose" Click="saveAndClose_Click" Grid.Column="1" Grid.Row="1" Content="Save and Close" Margin="104,204,10,10" Grid.ColumnSpan="2"/>
 
 
     </Grid>
