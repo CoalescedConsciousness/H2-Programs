@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace Snake
 {
@@ -150,7 +150,7 @@ namespace Snake
                     doneDrawingBg = true;
                 }
             }
-            StartNewGame();
+            //StartNewGame();
 
         }
 
@@ -191,7 +191,7 @@ namespace Snake
                     doneDrawingBg = true;
                 }
             }
-            StartNewGame();
+            //StartNewGame();
 
         }
 
@@ -234,7 +234,7 @@ namespace Snake
                     doneDrawingBg = true;
                 }
             }
-            StartNewGame();
+            //StartNewGame();
 
         }
         private void DrawGameAreaFour()
@@ -273,7 +273,7 @@ namespace Snake
                     doneDrawingBg = true;
                 }
             }
-            StartNewGame();
+            //StartNewGame();
 
         }
         #endregion
@@ -388,6 +388,7 @@ namespace Snake
         }
 
         private MediaPlayer soundbite = new();
+        private TimeSpan soundbitePos = TimeSpan.Zero;
         private MediaPlayer menu = new();
 
         private async Task PlaySoundBite()
@@ -409,6 +410,7 @@ namespace Snake
             //this.Title = $"Snake - Score: {currentScore} - Game speed: {gTimer.Interval.TotalMilliseconds}";
             this.statusScore.Text = currentScore.ToString();
             this.statusSpeed.Text = gTimer.Interval.TotalMilliseconds.ToString();
+            if (currentScore % (incrementRange.Text != "" ? int.Parse(incrementRange.Text) : 5 ) == 0 && currentScore != 0) ChangeGameArea();
         }
 
         private void DoCollissionCheck()
@@ -435,42 +437,79 @@ namespace Snake
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            SnakeDirection originalDirect = sDirect;
-            if (gPause)
+            if (incrementRange.IsFocused)
             {
-                gPause = false; 
-                wPause.Visibility = Visibility.Collapsed;
+                switch (e.Key)
+                {
+                    case Key.Enter:
+                        StartNewGame();
+                        wWelcomeMessage.Visibility = Visibility.Collapsed;
+                        incrementRange.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        break;
+
+                }
+            }
+            if (!incrementRange.IsFocused)
+            {
+                SnakeDirection originalDirect = sDirect;
+                if (gPause)
+                {
+                    gPause = false;
+                    wPause.Visibility = Visibility.Collapsed;
+                    wWelcomeMessage.Visibility = Visibility.Collapsed;
+                    menu.IsMuted = true;
+                    switch (e.Key)
+                    {
+                        case Key.Escape:
+                            Close();
+                            break;
+                        case Key.Enter:
+                            gPause = true;
+                            wPause.Visibility = Visibility.Collapsed;
+                            wWelcomeMessage.Visibility = Visibility.Visible;
+                            break;
+                        default:
+                            soundbite.Position = soundbitePos;
+                            soundbite.Play();
+                            break;
+                    }
+                    return;
+                }
+                switch (e.Key)
+                {
+                    case Key.Up:
+                        if (sDirect != SnakeDirection.Down) sDirect = SnakeDirection.Up;
+                        break;
+                    case Key.Down:
+                        if (sDirect != SnakeDirection.Up) sDirect = SnakeDirection.Down;
+                        break;
+                    case Key.Right:
+                        if (sDirect != SnakeDirection.Left) sDirect = SnakeDirection.Right;
+                        break;
+                    case Key.Left:
+                        if (sDirect != SnakeDirection.Right) sDirect = SnakeDirection.Left;
+                        break;
+                    case Key.B:
+                        ChangeGameArea();
+                        break;
+                    case Key.P:
+                        if (soundbite.CanPause)
+                        {
+                            soundbite.Pause();
+                            soundbitePos = soundbite.Position;
+                        }
+                        PauseGame();
+                        menu.IsMuted = false;
+                        break;
+                    case Key.Space:
+                        StartNewGame();
+                        break;
+                }
                 wWelcomeMessage.Visibility = Visibility.Collapsed;
-                menu.IsMuted = true;
-                return;
+
+                if (sDirect != originalDirect)
+                    MoveSnake();
             }
-            switch(e.Key)
-            {
-                case Key.Up:
-                    if (sDirect != SnakeDirection.Down) sDirect = SnakeDirection.Up;
-                    break;
-                case Key.Down:
-                    if (sDirect != SnakeDirection.Up) sDirect = SnakeDirection.Down;
-                    break;
-                case Key.Right:
-                    if (sDirect != SnakeDirection.Left) sDirect = SnakeDirection.Right;
-                    break;
-                case Key.Left:
-                    if (sDirect != SnakeDirection.Right) sDirect = SnakeDirection.Left;
-                    break;
-                case Key.B:
-                    ChangeGameArea();
-                    break;
-                case Key.P:
-                    PauseGame();
-                    menu.IsMuted = false;
-                    break;
-                case Key.Space:
-                    StartNewGame();
-                    break;
-            }
-            if (sDirect != originalDirect)
-                MoveSnake();
         }
 
         
@@ -484,6 +523,8 @@ namespace Snake
             if (gameArea == 2) DrawGameAreaThree();
             if (gameArea == 3) DrawGameAreaFour();
             if (gameArea > 3) gameArea = 0;
+            GameArea.Children.Remove(sFood);
+            DrawSnakeFood();
         }
 
         private void EndGame()
@@ -552,5 +593,26 @@ namespace Snake
 
         }
 
+        private void incrementRange_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex numberCheck = new("[^0-9]+");
+            e.Handled = numberCheck.IsMatch(e.Text);
+        }
+
+        private void clearHighscore_Click(object sender, RoutedEventArgs e)
+        {
+            SnakeHighscore.DeleteHighscoreList();
+        }
+
+        private void recoverHighscore_Click(object sender, RoutedEventArgs e)
+        {
+            SnakeHighscore.RecoverHighscoreList();
+        }
+
+        private void returnToMain_Click(object sender, RoutedEventArgs e)
+        {
+            wHighscores.Visibility = Visibility.Collapsed;
+            wWelcomeMessage.Visibility = Visibility.Visible;
+        }
     }
 }
