@@ -7,8 +7,8 @@
         xmlns:local="clr-namespace:Snake"
         mc:Ignorable="d"
         x:Name="gameWindow"
-        Title="SnakeWPF - Score: 0" SizeToContent="WidthAndHeight" ContentRendered="Window_ContentRendered" KeyUp="Window_KeyUp"
-        ResizeMode="NoResize" WindowStyle="None" Background="Black" MouseDown="Window_MouseDown">
+        Title="SnakeWPF - Score: 0" Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" ContentRendered="Window_ContentRendered" KeyUp="Window_KeyUp"
+        ResizeMode="CanResizeWithGrip" WindowStyle="None" Background="Black" MouseDown="Window_MouseDown">
     <Window.Resources>
         <CollectionViewSource Source="{Binding ElementName=gameWindow, Path=listHighscore}" x:Key="HighscoreSource">
             <CollectionViewSource.SortDescriptions>
@@ -22,7 +22,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
     </Window.Resources>
-    <DockPanel Background="Gray">
+    <DockPanel Background="Gray" MouseLeave="DockPanel_MouseLeave" MouseEnter="DockPanel_MouseEnter">
         <Grid DockPanel.Dock="Top" Name="titelBar">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -47,22 +47,35 @@
                 <TextBlock>Speed: </TextBlock>
                 <TextBlock Name="statusSpeed">0</TextBlock>
             </WrapPanel>
+            <!--<Button Grid.Column="2" DockPanel.Dock="Right" Background="Transparent" Foreground="Transparent">.</Button>-->
             <Button Grid.Column="2" DockPanel.Dock="Right" Background="Transparent" Foreground="GhostWhite"
                     FontWeight="Bold" FontSize="20" BorderThickness="0"  
-                    Name="btnClose" Click="btnClose_Click" Padding="10,0"
+                    Name="btnClose" Click="btnClose_Click" Padding="10,0" IsTabStop="False"
                     FontFamily="Comic Sans MS">X</Button>  <!-- Hate meeeee my friend~ -->
         </Grid>
         <Border BorderBrush="Black" BorderThickness="5">
-            <Canvas Name="GameArea" ClipToBounds="True" Width="420" Height="420">
+            <Canvas Name="GameArea" ClipToBounds="True" Width="Auto" Height="Auto" MinHeight="420" MinWidth="420" SizeChanged="GameArea_SizeChanged">
                 <!-- Welcome "screen" -->
                 <Border BorderBrush="Silver" BorderThickness="2" Width="300" Height="300" Canvas.Left="50" Canvas.Top="50" Name="wWelcomeMessage" Panel.ZIndex="1">
                     <StackPanel Orientation="Vertical" Background="LightSlateGray">
-                        <TextBlock FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" Margin="0,20,0,0">Snake Game</TextBlock>
+                        <TextBlock FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" Margin="0,0,0,0">Snake Game</TextBlock>
                         <TextBlock TextWrapping="Wrap" Margin="10" FontSize="16">You know what to do, maggot! Erh.. snake..?..</TextBlock>
                         <TextBlock FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="Green">Space = Start</TextBlock>
                         <Button Margin="0" Name="showHighscore" Click="BtnShowHighscore_Click" HorizontalAlignment="Center" Width="200" Height="24">_Highscores</Button>
                         <Button HorizontalAlignment="Center" Margin="0" Name="clearHighscore" Click="clearHighscore_Click" Width="200" Height="24">_Clear list</Button>
                         <Button HorizontalAlignment="Center" Margin="0" Name="recoverHighscore" Click="recoverHighscore_Click" Width="200" Height="24">_Recover list</Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                            
+                                <Label Grid.Column="0">Board Size</Label>
+                                <Slider Grid.Column="1" Name="BoardSize" Maximum="100" Minimum="1" Value="21" Width="140" ValueChanged="BoardSize_ValueChanged"/>
+                            </Grid>
+
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label>Change level when score is divisible by:</Label>
                             <TextBox x:Name="incrementRange" HorizontalAlignment="Center" Margin="5" Width="20" PreviewTextInput="incrementRange_PreviewTextInput"/>
@@ -105,20 +118,38 @@
                 <!-- Deathscreen -->
                 <Border BorderBrush="Silver" BorderThickness="2" Width="300" Height="300" Canvas.Left="50" Canvas.Top="50" Name="wEnd" Panel.ZIndex="1" Visibility="Collapsed">
                     <StackPanel Orientation="Vertical" Background="LightSlateGray">
-                        <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,20,0,0">Oh no!</TextBlock>
-                        <TextBlock HorizontalAlignment="Center" FontSize="16" TextWrapping="Wrap" FontWeight="Bold">Someone set us up the bomb</TextBlock>
-                        <TextBlock Margin="20" TextAlignment="Center" FontSize="16">Make your time:</TextBlock>
+                        <!--<TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,20,0,0">Oh No!</TextBlock>-->
+                        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" FontSize="25" Margin="0,20,0,0" TextWrapping="Wrap" FontWeight="Bold">You are a flesh automaton</TextBlock>
+                        <TextBlock Margin="20" TextAlignment="Center" FontSize="25" TextWrapping="Wrap">Animated by neurotransmitters</TextBlock>
                         <TextBlock Name="tbFinalScore" TextAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="Maroon">0</TextBlock>
-                        <TextBlock TextAlignment="Center" FontSize="16" Margin="20">All your base, are belong to us!</TextBlock>
+                        <!--<TextBlock TextAlignment="Center" FontSize="16" Margin="20">All your base, are belong to us!</TextBlock>-->
                     </StackPanel>
                 </Border>
                 
                 <!-- Pause screen -->
-                <Border BorderBrush="Silver" BorderThickness="2" Width="300" Height="150" Canvas.Left="50" Canvas.Top="100" Name="wPause" Panel.ZIndex="1" Visibility="Collapsed">
+                <Border BorderBrush="Silver" BorderThickness="2" Width="320" Height="150" Canvas.Left="50" Canvas.Top="100" Name="wPause" Panel.ZIndex="1" Visibility="Collapsed">
                     <StackPanel Orientation="Vertical" Background="LightSlateGray">
                         <TextBlock HorizontalAlignment="Center" FontSize="30" Margin="0,20,0,0">PAUSED</TextBlock>
-                        <TextBlock HorizontalAlignment="Center" FontSize="15">Press any key to continue..</TextBlock>
-                        <TextBlock HorizontalAlignment="Center" FontSize="15">Press ESC to quit..</TextBlock>
+                        <StackPanel HorizontalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                            
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock HorizontalAlignment="Right" FontSize="15">[ANY]: </TextBlock>
+                                    <TextBlock HorizontalAlignment="Right" FontSize="15">[ESC]: </TextBlock>
+                                    <TextBlock HorizontalAlignment="Right" FontSize="15">[RETURN]: </TextBlock>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock HorizontalAlignment="Left" FontSize="15">Continue..</TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" FontSize="15">Quit..</TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" FontSize="15">Main Menu..</TextBlock>
+                            </StackPanel>
+                            </Grid>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
             </Canvas>

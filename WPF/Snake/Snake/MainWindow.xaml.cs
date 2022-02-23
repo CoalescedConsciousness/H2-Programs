@@ -444,7 +444,9 @@ namespace Snake
                     case Key.Enter:
                         StartNewGame();
                         wWelcomeMessage.Visibility = Visibility.Collapsed;
-                        incrementRange.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        //incrementRange.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                        gPause = false;
+                        FocusManager.SetFocusedElement(FocusManager.GetFocusScope(incrementRange), null); // Kills logical focus.
                         break;
 
                 }
@@ -515,9 +517,12 @@ namespace Snake
         
         private int gameArea = 0;
 
-        private void ChangeGameArea()
+        private void ChangeGameArea(bool countIncrement = true)
         {
-            gameArea++;
+            if (countIncrement)
+            {
+                gameArea++;
+            }
             if (gameArea == 0) DrawGameArea();
             if (gameArea == 1) DrawGameAreaTwo();
             if (gameArea == 2) DrawGameAreaThree();
@@ -613,6 +618,69 @@ namespace Snake
         {
             wHighscores.Visibility = Visibility.Collapsed;
             wWelcomeMessage.Visibility = Visibility.Visible;
+        }
+
+        private void DockPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            gPause = true;
+            if (wWelcomeMessage.Visibility == Visibility.Collapsed)
+                wPause.Visibility = Visibility.Visible;
+        }
+
+        private void DockPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+            if (wPause.Visibility == Visibility.Visible)
+                gPause = false;
+                wPause.Visibility = Visibility.Collapsed;
+        }
+
+        private void GameArea_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void GameArea_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //double x = Math.Floor(e.NewSize.Width);
+
+            ////double y = Math.Floor(GameArea.Height);
+            //bool sizeCompliant = false;
+
+            //if (gameWindow.IsLoaded)
+            //{
+            //    //if (e.Handled == true)
+            //    //{
+            //    //    while (!sizeCompliant)
+            //    //    {
+
+            //    //        x++;
+            //    //        if (x % SnakeSquareSize == 0)
+            //    //        {
+            //    //            sizeCompliant = true;
+
+            //    //        }
+
+
+            //    //    }
+            //    //}
+            //}
+
+
+            ChangeGameArea(false);
+        }
+
+        private void BoardSize_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int sliderValue = (int)BoardSize.Value;
+            if (sliderValue % 2 == 0)
+            {
+                double nSize = sliderValue * SnakeSquareSize;
+                GameArea.Width = GameArea.Height = nSize;
+
+                ChangeGameArea(false);
+            }
+
         }
     }
 }
