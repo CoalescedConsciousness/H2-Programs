@@ -20,11 +20,34 @@ namespace ContactsProject.Pages.Contacts
             _context = context;
         }
 
-        public IList<Contact> Contact { get;set; }
+        
+        [BindProperty]  
+        public List<Contact> Contact { get;set; }
 
         public async Task OnGetAsync()
         {
             Contact = await _context.Contact.ToListAsync();
+            Contact = Contact.OrderByDescending(x => x.IsFavourite).ToList();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            for (int i = 0; i < Contact.Count; i++)
+            {
+                //    //int id = Contact[i].Id;
+                //    //Contact target = Contact.FirstOrDefault(x => x.Id == id);
+                //    //target.IsFavourite = Request.Form["IsFavourite"].ToString() == "true" ? true : false;
+                _context.Attach(Contact[i]).State = EntityState.Modified;
+            }
+            ////foreach (var contact in Contact)
+            //{
+            //    _context.Attach(contact).State = EntityState.Modified;
+            //}
+
+
+            _context.SaveChanges();
+            Contact = Contact.OrderBy(x => x.IsFavourite).ToList();
+            return RedirectToPage("./Index");
         }
     }
 }

@@ -1,0 +1,131 @@
+﻿@page "{SelectedType?}"
+@model ContactsProject.Pages.Contacts.FavouritesModel
+
+@{
+    ViewData["Title"] = "Favourites";
+}
+
+<h1>Favourites</h1>
+
+<form method="post">
+    <select asp-for="CType" asp-items="@Html.GetEnumSelectList<FavouritesModel.ContactType>()" value="">
+    </select>
+    <input type="submit" class="btn btn-primary">
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].IsFavourite)
+                </th>
+                <th>
+                
+                    @switch (TempData["Selection"])
+                    {
+                        case "mail":
+                        @Html.DisplayNameFor(model => model.Contact[0].Email)
+                        break;
+                        case "phone":
+                        @Html.DisplayNameFor(model => model.Contact[0].Phone)
+                        break;
+                        default:
+                        break;
+
+                    }
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @for (int i = 0; i < Model.Contact.Count; i++) {
+                if (Model.Contact[i].IsFavourite)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].IsFavourite)
+                        </td>
+                        <td>
+                            @switch (TempData["Selection"])
+                            {
+                                case "mail":
+                                @Html.DisplayFor(modelItem => Model.Contact[i].Email)
+                                break;
+                                case "phone":
+                                @Html.DisplayFor(modelItem => Model.Contact[i].Phone)
+                                break;
+                                default:
+                                break;
+
+                            }
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@Model.Contact[i].Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@Model.Contact[i].Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@Model.Contact[i].Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</form>
+
+
+           @* @{
+                //object ChangeSelection()
+                {
+                    if (Model.CType == FavouritesModel.ContactType.mail)
+                    {
+                        <th>
+                            @Html.DisplayNameFor(model => model.Contact[0].Email)
+                        </th>
+                    }
+                    if (Model.CType == FavouritesModel.ContactType.phone)
+                    {
+                        <th>
+                            @Html.DisplayNameFor(model => model.Contact[0].Phone)
+                        </th>
+                    }
+                    //if (@contactType == @FavouritesModel.ContactType.mail)
+                    //{
+                    //    return
+                    //                 <th>
+                    //                     @Html.DisplayNameFor(model => model.Contact[0].Email)
+                    //                 </th>
+                    //}
+                    //else if (@contactType == @FavouritesModel.ContactType.phone)
+                    //{
+                    //    return
+                    //                      <th>
+                    //                          @Html.DisplayNameFor(model => model.Contact[0].Phone)
+                    //                      </th>
+                    //}
+                    //else return false;
+                    //switch ()
+                    //{
+                    //    case @FavouritesModel.ContactType.mail:
+                    //        <th>
+                    //            @Html.DisplayNameFor(model => model.Contact[0].Email)
+                    //        </th>
+                    //        break;
+                    //    case @FavouritesModel.ContactType.phone:
+                    //        <th>
+                    //            @Html.DisplayNameFor(model => model.Contact[0].Phone)
+                    //        </th>
+                    //        break;
+                    //    default:
+                    //        break;
+                    //}
+                   
+                }
+            }*@
+            
+            

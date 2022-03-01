@@ -128,7 +128,7 @@ namespace Snake
                 {
                     Width = SnakeSquareSize,
                     Height = SnakeSquareSize,
-                    Fill = nIsOdd ? Brushes.White : Brushes.Black,
+                    Fill = nIsOdd ? Brushes.White : Brushes.White,
                 };
                 GameArea.Children.Add(rect);
                 Canvas.SetTop(rect, nY);

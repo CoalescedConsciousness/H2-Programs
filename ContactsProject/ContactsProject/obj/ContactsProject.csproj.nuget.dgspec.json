@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\WPF\\ContactsProject\\ContactsProject\\ContactsProject.csproj": {}
+    "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\ContactsProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\WPF\\ContactsProject\\ContactsProject\\ContactsProject.csproj": {
+    "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\ContactsProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\WPF\\ContactsProject\\ContactsProject\\ContactsProject.csproj",
+        "projectUniqueName": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\ContactsProject.csproj",
         "projectName": "ContactsProject",
-        "projectPath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\WPF\\ContactsProject\\ContactsProject\\ContactsProject.csproj",
+        "projectPath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\ContactsProject.csproj",
         "packagesPath": "C:\\Users\\Santi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\WPF\\ContactsProject\\ContactsProject\\obj\\",
+        "outputPath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

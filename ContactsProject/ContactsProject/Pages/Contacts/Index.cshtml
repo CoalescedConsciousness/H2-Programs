@@ -8,59 +8,84 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create New</a> | 
+    <a asp-page="Create" target="_blank">Create New In Seperate Window</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].IsFavourite)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].EditDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contact[0].CreateDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Contact) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsFavourite)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EditDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+
+<form method="post">
+    <table class="table form-control">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].Name)
+                   
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].IsFavourite)
+                    
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].Email)
+                    
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].Phone)
+                    
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].EditDate)
+                   
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact[0].CreateDate)
+                    
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < Model.Contact.Count; i++)
+
+             {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Contact[i].Name)
+                    @Html.HiddenFor(model => model.Contact[i].Name)
+                    @Html.HiddenFor(model => model.Contact[i].Id)
+
+                </td>
+                <td>
+                    @Html.CheckBoxFor(modelItem => Model.Contact[i].IsFavourite)
+                    @*@Html.HiddenFor(model => model.Contact[0].IsFavourite)*@
+                    @*<input type="checkbox" asp-for="@item.IsFavourite" value="IsFavourite"/>
+                    <input type="hidden" asp-for="@item.Id" value="itemId"/>*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Contact[i].Email)
+                    @Html.HiddenFor(model => model.Contact[i].Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Contact[i].Phone)
+                    @Html.HiddenFor(model => model.Contact[i].Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Contact[i].EditDate)
+                    @Html.HiddenFor(model => model.Contact[i].EditDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Contact[i].CreateDate)
+                    @Html.HiddenFor(model => model.Contact[i].CreateDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@Model.Contact[i].Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@Model.Contact[i].Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@Model.Contact[i].Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+     <input type="submit" value="Save Favourites" class="btn btn-primary">
+</form>

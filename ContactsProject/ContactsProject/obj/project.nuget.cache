@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z938ro/relxOdShuzcw0KwZbpFiKkNAbuGEVPIrnv05ItyTzoHPCzr+W6w5eJYHnJmEQcmWMVAzpL3yD4hWxKw==",
+  "dgSpecHash": "4LMarOsUj0hU3WMExxbBwnFFzgMhrwe7QhC9CDihsoF+/aRCc/5EhclqaJ6e+BZC5VYX3VDBSsNZdlIZkZqz6Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\WPF\\ContactsProject\\ContactsProject\\ContactsProject.csproj",
+  "projectFilePath": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\ContactsProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Santi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Santi\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

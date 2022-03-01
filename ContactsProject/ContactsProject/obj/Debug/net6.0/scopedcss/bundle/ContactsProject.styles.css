@@ -6,8 +6,11 @@ a.navbar-brand[b-j0shdohczm] {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  color: black;
 }
-
+header[b-j0shdohczm] {
+    background-color: black;
+}
 a[b-j0shdohczm] {
   color: #0077cc;
 }
@@ -20,9 +23,15 @@ a[b-j0shdohczm] {
 
 .nav-pills .nav-link.active[b-j0shdohczm], .nav-pills .show > .nav-link[b-j0shdohczm] {
   color: #fff;
-  background-color: #1b6ec2;
+  background-color: black;
   border-color: #1861ac;
+  border: 4px solid black;
 }
+
+nav-link[b-j0shdohczm] {
+    background-color: black;
+}
+
 
 .border-top[b-j0shdohczm] {
   border-top: 1px solid #e5e5e5;
@@ -46,4 +55,6 @@ button.accept-policy[b-j0shdohczm] {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+  color: darkgray;
+  background-color: #1861ac;
 }
