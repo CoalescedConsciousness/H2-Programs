@@ -22,13 +22,13 @@ a {
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: black;
+  /*background-color: black;*/
   border-color: #1861ac;
   border: 4px solid black;
 }
 
-nav-link {
-    background-color: black;
+.nav-link {
+    border: 5px solid black;
 }
 
 

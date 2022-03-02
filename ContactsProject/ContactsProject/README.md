@@ -1,9 +1,16 @@
 ﻿### Assignment: Contactlist
 ### Author: Mads Søndergaard
-### Version: 0.0.0
+### Version: 1.0.0
 
 ### Changelog:
+- 1.0.0
+  - Program considered presentation-ready.
+    - Ability to Create, Edit, Delete, and Read "Contacts"
+	- Ability to sort by Favourites, as well as mark as favourites.
+	- Includes validation of input.
 
+- 0.0.0
+  - Initial Commit
 
 
 

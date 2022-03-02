@@ -78,7 +78,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: #dc3545;
+  background-color: white;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -3871,22 +3871,23 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  border: 5px solid black;
 }
 
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
   color: #0d6efd;
+  background-color: #bebebe;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 5px solid black;
 }
-@media (prefers-reduced-motion: reduce) {
-  .nav-link {
-    transition: none;
-  }
-}
+
+
 .nav-link:hover, .nav-link:focus {
-  color: #0a58ca;
+  color: lightgray;
+  background-color: white;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -3894,18 +3895,23 @@ textarea.form-control-lg {
   cursor: default;
 }
 
+.nav-link: {
+    background-color: ghostwhite;
+}
+
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
 }
 .nav-tabs .nav-link {
   margin-bottom: -1px;
-  background: none;
-  border: 1px solid transparent;
+  border: 1px solid black;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
+  /*background-color: lightgray;*/
 }
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
+  background-color: lightgray;
   isolation: isolate;
 }
 .nav-tabs .nav-link.disabled {
@@ -3916,7 +3922,7 @@ textarea.form-control-lg {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #fff;
+  background-color: lightgray;
   border-color: #dee2e6 #dee2e6 #fff;
 }
 .nav-tabs .dropdown-menu {
@@ -4000,6 +4006,10 @@ textarea.form-control-lg {
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
+  border: 2px solid black;
+  border-collapse: collapse;
+  border-radius: 5px 5px;
+  margin: 3px;
 }
 .navbar-nav .dropdown-menu {
   position: static;
@@ -4068,6 +4078,7 @@ textarea.form-control-lg {
   .navbar-expand-sm .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
+    border: 2px solid black;
   }
   .navbar-expand-sm .navbar-nav-scroll {
     overflow: visible;

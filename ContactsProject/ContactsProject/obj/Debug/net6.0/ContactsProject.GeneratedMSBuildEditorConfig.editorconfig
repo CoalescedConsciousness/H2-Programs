@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsProject\ContactsProject
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Santi/Desktop/EUC/H2/H2-Programs/ContactsProject/ContactsProject/Pages/(Deprecated)Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcKERlcHJlY2F0ZWQpSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Santi/Desktop/EUC/H2/H2-Programs/ContactsProject/ContactsProject/Pages/Contacts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -45,10 +49,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Santi/Desktop/EUC/H2/H2-Programs/ContactsProject/ContactsProject/Pages/Errors/404.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JzXDQwNC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Santi/Desktop/EUC/H2/H2-Programs/ContactsProject/ContactsProject/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Santi/Desktop/EUC/H2/H2-Programs/ContactsProject/ContactsProject/Pages/Privacy.cshtml]

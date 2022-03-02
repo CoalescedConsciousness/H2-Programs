@@ -13,11 +13,13 @@ namespace ContactsProject.Pages.Contacts
 {
     public class CreateModel : PageModel
     {
+        private readonly IRepository _repo;
         private readonly ContactsProject.Data.ContactsProjectContext _context;
 
-        public CreateModel(ContactsProject.Data.ContactsProjectContext context)
+        public CreateModel(ContactsProject.Data.ContactsProjectContext context, IRepository repo)
         {
             _context = context;
+            _repo = repo;
         }
 
         public IActionResult OnGet()
@@ -36,7 +38,7 @@ namespace ContactsProject.Pages.Contacts
                 return Page();
             }
 
-            Contact.EditDate = "";
+            Contact.EditDate = null;
             Contact.CreateDate = DateTime.Now.ToString();
             _context.Contact.Add(Contact);
             await _context.SaveChangesAsync();

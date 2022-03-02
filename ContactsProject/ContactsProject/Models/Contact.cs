@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace ContactList.Models
 {
@@ -26,9 +27,11 @@ namespace ContactList.Models
         [BindProperty]
         public int Phone { get; set; }
 
+        [Display(Name = "Last Edited")]
         [HiddenInput]
         public string? EditDate { get; set; } 
-
+        
+        [Display(Name = "Created on")]
         [HiddenInput]
         public string? CreateDate { get; set; }
 

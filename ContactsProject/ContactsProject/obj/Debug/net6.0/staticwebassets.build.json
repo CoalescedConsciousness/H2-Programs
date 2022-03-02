@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hb/TmzOJb7we4FWqMBg9d0IfzTD0LNfgm8PFqFu1aMw=",
+  "Hash": "8OnMKsM04toCAaadwLwo+V67fNQKWFuxRR9RuSUdgkY=",
   "Source": "ContactsProject",
   "BasePath": "_content/ContactsProject",
   "Mode": "Default",
@@ -151,40 +151,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
-    },
-    {
-      "Identity": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "SourceId": "ContactsProject",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\wwwroot\\",
-      "BasePath": "_content/ContactsProject",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "SourceId": "ContactsProject",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\wwwroot\\",
-      "BasePath": "_content/ContactsProject",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
       "Identity": "C:\\Users\\Santi\\Desktop\\EUC\\H2\\H2-Programs\\ContactsProject\\ContactsProject\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",

@@ -5,6 +5,8 @@
     ViewData["Title"] = "Index";
 }
 
+
+
 <h1>Index</h1>
 
 <p>
@@ -71,6 +73,13 @@
                     @Html.HiddenFor(model => model.Contact[i].Phone)
                 </td>
                 <td>
+                   @* @using System.Globalization
+                        @{
+                            CultureInfo test = new CultureInfo("en-US");
+                            DateTime? nDate = DateTime.Parse(Model.Contact[i].EditDate);
+                            <span>@nDate</span>*@
+                            @*//@Html.DisplayFor(modelItem => DateTime.Parse(Model.Contact[i].EditDate));
+                    }*@
                     @Html.DisplayFor(modelItem => Model.Contact[i].EditDate)
                     @Html.HiddenFor(model => model.Contact[i].EditDate)
                 </td>

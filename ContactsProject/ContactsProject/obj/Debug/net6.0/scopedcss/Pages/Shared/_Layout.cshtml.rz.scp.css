@@ -22,13 +22,13 @@ a[b-j0shdohczm] {
 
 .nav-pills .nav-link.active[b-j0shdohczm], .nav-pills .show > .nav-link[b-j0shdohczm] {
   color: #fff;
-  background-color: black;
+  /*background-color: black;*/
   border-color: #1861ac;
   border: 4px solid black;
 }
 
-nav-link[b-j0shdohczm] {
-    background-color: black;
+.nav-link[b-j0shdohczm] {
+    border: 5px solid black;
 }
 
 
