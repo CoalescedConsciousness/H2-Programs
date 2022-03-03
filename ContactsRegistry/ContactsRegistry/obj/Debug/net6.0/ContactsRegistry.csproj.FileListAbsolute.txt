@@ -1,8 +1,0 @@
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.csproj.AssemblyReference.cache
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.AssemblyInfoInputs.cache
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.AssemblyInfo.cs
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.csproj.CoreCompileInputs.cache
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.RazorAssemblyInfo.cache
-C:\Users\Santi\Desktop\EUC\H2\H2-Programs\ContactsRegistry\ContactsRegistry\obj\Debug\net6.0\ContactsRegistry.RazorAssemblyInfo.cs

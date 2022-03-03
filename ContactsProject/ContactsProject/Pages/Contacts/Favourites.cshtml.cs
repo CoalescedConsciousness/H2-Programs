@@ -59,12 +59,12 @@ namespace ContactsProject.Pages.Contacts
             var selectedValue = Request.Form["CType"];
             Contact = await _context.Contact.ToListAsync();
             if (selectedValue == "0") {
-                ViewData.Add("Selection", "mail");
+                //ViewData.Add("Selection", "mail");
                 TempData.Add("Selection", "mail");
             }
             else if (selectedValue == "1")
             { 
-                ViewData.Add("Selection", "phone"); 
+                //ViewData.Add("Selection", "phone"); 
                 TempData.Add("Selection", "phone");
             }
             else SelectedType = "";

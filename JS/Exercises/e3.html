@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <div style="border:2px solid black; margin: 5px; width: 220px; height:100px;">
+            <div>
+                <label for="input1">Input 1</label>
+                <input onchange="e3()" id="input1"></input>
+            </div>
+            <div>
+                <label for="input2">Input 2</label>
+                <input onchange="e3()" id="input2"></input>
+            </div>
+            -------------------------------------
+            <div>
+                <div>
+                <label for="demo">Result:</label>
+                <span id="demo"></span>
+                </div>
+                <div>
+                <label for="aggregate">Aggregation:</label>
+                <span onchange="e3()" id="aggregate"></span>
+                </div>
+            </div>
+        </div>
+        <div style="border:2px solid black; margin: 5px; width: 220px; height:80px">
+            <div>
+                <label for="percent">Percent:</label>
+                <input onchange="e3()" id="percent"></input>
+            </div>
+            <div>
+                <label for="grade">Grade:</label>
+                <span id="grade"></span>
+            </div>
+        </div>
+        <div style="border:2px solid black; margin: 5px; width: 220px; height:30px">
+            <div>
+                <label for="guess">Guess:</label>
+                <input onchange="e3()" id="guess"></input>
+            </div>
+        </div>
+        
+    </body>
+    <script src="./e3.js"></script>
+</html>

@@ -39,7 +39,7 @@ namespace ContactsProject.Pages.Contacts
             }
 
             Contact.EditDate = null;
-            Contact.CreateDate = DateTime.Now.ToString();
+            Contact.CreateDate = DateTime.Now;
             _context.Contact.Add(Contact);
             await _context.SaveChangesAsync();
 

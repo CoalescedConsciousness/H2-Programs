@@ -33,7 +33,7 @@ namespace ContactList.Models
         
         [Display(Name = "Created on")]
         [HiddenInput]
-        public string? CreateDate { get; set; }
+        public DateTime? CreateDate { get; set; }
 
     }
 }
