@@ -1,12 +1,14 @@
-
+const b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+const b16 = "0123456789abcdef"
 
 function convertToB64()
 {
     let finalResult = "";
+    let hexResult = "";
     let input = document.getElementById("input").value
-    document.getElementById("base64").innerHTML = btoa(input) // Easy-peasy way.
+    // document.getElementById("binary").innerHTML = btoa(input) // Easy-peasy way.
 
-    let b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
     let arrB64 = []
     for (const a in b64)
     {
@@ -21,15 +23,17 @@ function convertToB64()
         let binaryString = getBinary(pos)
         let hexString = getHex(pos)
         finalResult += binaryString + " "
+        hexResult += hexString
     }
 
-    document.getElementById("base64").innerHTML = finalResult
+    document.getElementById("binary").innerHTML = finalResult
+    document.getElementById("hex").innerHTML = hexResult
 }
 
 function getBinary(number)
 {
     // console.log(number)
-    let result = "";
+    let arrRes = [];
     if (number != 0)
     {
         while (number != 0)
@@ -40,20 +44,21 @@ function getBinary(number)
             {    
                 number = Math.floor(number)
             }
+            arrRes.push(part.toString())
             // console.log(number)
-            result += part.toString()
+            // result += part.toString()
         }
     }
     // console.log(result)
     // console.log(result.length)
-    while (result.length < 6)
+    while (arrRes.length < 6)
     {
-        result += "0"
+        arrRes.push(0)
     }
     // console.log(result.length)
     // console.log(result)
     
-    return result
+    return arrRes.reverse().toString().replaceAll(",", "")
 }
 
 
@@ -66,10 +71,23 @@ function getHex(int)
     //     intRes += Math.pow(hexNumber[i], i)
     // }
     let result = ""
-    while (int != 0)
+    if (int == 0)
     {
-        let part = int % 16
-        int = int / 16  
-        result += part
+        return b16[int]
     }
+    else 
+    {
+    while (int != 0)
+        {
+            let part = int % 16
+            int = Math.floor(int / 16)
+            // result += part.toString()
+            console.log("------")
+            console.log(part)
+            console.log(b16[part])
+            result += b16[part]
+        }
+    }
+    
+    return result
 }
