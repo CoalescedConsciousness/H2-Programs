@@ -1,0 +1,26 @@
+div {
+    margin: 300px;
+    border: 2px solid black;
+    margin: 15px;
+    text-align: center;
+    padding: 15px;
+    /* padding: 5px; */
+    /* width: 220px; */
+}
+
+table {
+    text-align: left;
+}
+
+th {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-bottom: 1px solid black;
+}
+
+td {
+    padding: 5px;
+    width: 200px;
+    border: 1px solid lightgray;
+}

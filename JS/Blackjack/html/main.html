@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/cardgame.css">
+    </head>
+    <header>
+
+    </header>
+    <body>
+        <span class="col-sm-4"></span>
+        <div class="col-sm-4">
+            <form>
+                <table class="col-sm-12">
+                    <thead>
+                        <th>
+                            Rules:
+                        </th>
+                        <th>
+                            Setting:
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Cards:
+                            </td>
+                            <td>
+                                <input id="cardNum" placeholder="52" onkeydown="checkNumInput(event)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Players:
+                            </td>
+                            <td>
+                                <select id="playerNum">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" style="padding:5px; margin: 5px;" onclick="beginGame()">Start game</button>
+            </form>
+        </div>
+        <!-- <div></div> -->
+    </body>
+    <script src="../js/main.js"></script>
+</html>
