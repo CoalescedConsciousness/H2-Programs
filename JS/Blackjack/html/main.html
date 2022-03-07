@@ -10,44 +10,47 @@
     <body>
         <span class="col-sm-4"></span>
         <div class="col-sm-4">
-            <form>
-                <table class="col-sm-12">
-                    <thead>
-                        <th>
-                            Rules:
-                        </th>
-                        <th>
-                            Setting:
-                        </th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                Cards:
-                            </td>
-                            <td>
-                                <input id="cardNum" placeholder="52" onkeydown="checkNumInput(event)">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Players:
-                            </td>
-                            <td>
-                                <select id="playerNum">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="submit" style="padding:5px; margin: 5px;" onclick="beginGame()">Start game</button>
-            </form>
+        <table class="tablecontainer table-striped">
+            <thead>
+                <th>
+                    Rules:
+                </th>
+                <th>
+                    Setting:
+                </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Cards:
+                    </td>
+                    <td>
+                        <input id="cardNum" placeholder="52" onkeydown="checkNumInput(event)">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Players:
+                    </td>
+                    <td>
+                        <select id="playerNum">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" style="float: left;padding:5px; margin: 5px;" onclick="newGame()">Start game</button>
         </div>
-        <!-- <div></div> -->
+        <span class="col-sm-4"></span>
+    <!-- </div> -->
+        
+        <div id="playerSection" class="col-sm-12"></div>
     </body>
     <script src="../js/main.js"></script>
+    <script src="../js/player.js"></script>
 </html>
