@@ -3,85 +3,92 @@ const cards = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace" ]
 var deck = [];
 var cardCount = document.getElementById("cardNum").value ? parseInt(document.getElementById("cardNum").value) : 52
 var playerCount = document.getElementById("playerNum").value ? parseInt(document.getElementById("playerNum").value) : 1
-var dealtCards = [];
 var players = [];
+var playerTurn = playersToArray()
+var gameDealer;
 
-function player() {
-    name: ""
-    score: 0
-    hand: 0
+// Function to help determine amount of players.
+function playersToArray()
+{
+    let arrPlayers = []
+    for (let i = 0; i < playerCount; i++) arrPlayers.push(i)
+    return arrPlayers
 }
-function card() {
-    suite: ""
-    value: ""
-}
 
 
+// Starts new game by building deck > shuffling it > creating players > building player boards > initializing player positions (=> Player 1)
 function newGame()
 {
     deck = buildDeck()
     deck = shuffleCards(deck)
     players = createPlayers()
     buildHtml();
+    buttonShift();
 }
 
-function createPlayers()
+// Ends turn depending on player choice/game result. Trinary result: 
+// 1) player stood, dealers turn (bust == false)
+// 2) player won or got blackjack (bust == null)
+// 3) player lost or went bust (bust == true)
+function endTurn(bust)
 {
-    let players = [];
-    for (let i = 0; i < parseInt(document.getElementById("playerNum").value); i++)
-    {
-        let nPlayer = new player()
-        nPlayer.name = `Player ${i}`;
-        players.push(nPlayer); 
-    }
-    return players
-}
+    console.log("Turn ending")
+    sTarget = document.getElementById(`playerScore${playerTurn[0]}`)
+    pTarget = document.getElementById(`playerHand${playerTurn[0]}`)
 
-
-function buildDeck()
-{
-    deck = [];
-    for (const x in suites)
+    if (bust == false) // Player Stood
     {
-        
-        for (let y = 0; y < cards.length; y++)
-        {
-            var aCard = new card();
-            aCard.suite = suites[x]
-            aCard.value = cards[y]
-            deck.push(aCard)
-        }
+        console.log("Sending to Dealer")
+        dealerTurn()
         
     }
-    return deck;
-}
-
-function shuffleCards(deck)
-{
-    for (let i = 0; i < deck.length; i++)
+    if (bust == null) // Player got blackjack/won
     {
-        let rndVal = randomNumberInRange(1, deck.length - 1)
-        let tempCard = deck[rndVal]
-        let origCard = deck[i]
-        deck[i] = tempCard
-        deck[rndVal] = origCard
-    };
-    return deck
-}
-
-function randomNumberInRange(fromInt, toInt)
-{
-    return Math.floor(Math.random() * toInt) + fromInt;
-}
-
-function checkNumInput(event)
-{
-    console.log(event)
-    if (event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode >= 96 && event.keyCode <= 105 || event.keyCode == 8)  // Top row numbers
+        console.log("Wahey!")
+        alert("You won!")
+        changePlayer()
+    }
+    if (bust == true) // Player busted/lost
     {
-        return window.event.returnValue = true;
+        console.log("Aww..")
+        alert("You lost!")
+        changePlayer()
     }
-    else {
-        return window.event.returnValue = false;
+    console.log(playerTurn[0])
+    // Clear hand and score:
+    sTarget.innerText = 0
+    pTarget.innerText = ""
+    
+    // Clear Dealer:
+    document.getElementById("dealerHand").innerText = ""
+    document.getElementById("dealerScore").innerText = 0
+
+
+
+}
+// Function that iterates through the dealers turn automatically.
+function dealerTurn()
+{
+    let dealerDeck = [];
+    let result = 0;
+    while (result < 16)
+    {
+        console.log("Dealing to Dealer")
+        let dealerHit = deck.pop()
+        pTarget = document.getElementById(`dealerHand`)
+        newHit = document.createElement("p")
+        pTarget.appendChild(newHit)
+        newHit.appendChild(document.createTextNode("["+dealerHit.value+" of "+dealerHit.suite+"]"))
+        console.log("Test")
+        dScore = document.getElementById(`dealerScore`)
+        
+        dealerDeck.push(dealerHit)
+        result = recalcScore(dealerDeck)
+        dScore.innerText = result
+        console.log(result)
     }
+
+    if (result > 21 || result < players[playerTurn[0]].score) endTurn(null)
+    else if (result > players[playerTurn[0]].score || result == players[playerTurn[0]].score) endTurn(true)
+
 }

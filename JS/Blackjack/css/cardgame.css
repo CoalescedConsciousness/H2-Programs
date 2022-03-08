@@ -1,11 +1,20 @@
+
 div {
     border: 2px solid black;
     text-align: center;
+    background-color: darkgreen;
+}
+header {
+    background-color: grey;
+}
+body {
+    background-color: green;
 }
 
 table {
     text-align: left;
     margin: 15px;
+    background-color: white;
 }
 
 th {
@@ -22,5 +31,21 @@ td {
 
 #playerContainer {
     float: left;
-    background-color: ghostwhite;
+    background-color: lightgray;
+}
+
+.player-button-hit:enabled {
+    box-shadow: 0px 0px 10px green;
+}
+
+.player-button-stand:enabled {
+    box-shadow: 0px 0px 10px red;
+}
+
+.player-button-hit:disabled {
+    display: none;
+}
+
+.player-button-stand:disabled {
+    display: none;
 }

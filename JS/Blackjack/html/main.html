@@ -5,52 +5,83 @@
         <link rel="stylesheet" type="text/css" href="../css/cardgame.css">
     </head>
     <header>
-
+        <row style="text-align: center;font-size:xx-large;">
+            <p style="padding:0px;border-bottom:2px solid black;">Player: <span id="currentPlayer"></span></p>
+        </row>
     </header>
     <body>
         <span class="col-sm-4"></span>
-        <div class="col-sm-4">
-        <table class="tablecontainer table-striped">
-            <thead>
-                <th>
-                    Rules:
-                </th>
-                <th>
-                    Setting:
-                </th>
-            </thead>
+        <div class="col-sm-4" style="padding:20px;margin:10px;margin-bottom: 20px;">
+        <table style="background-color:black;">
             <tbody>
                 <tr>
                     <td>
-                        Cards:
-                    </td>
-                    <td>
-                        <input id="cardNum" placeholder="52" onkeydown="checkNumInput(event)">
+                        <table class="tablecontainer table-striped" id="infoTable" style="float:left">
+                            <thead>
+                                <th>
+                                    Rules:
+                                </th>
+                                <th>
+                                    Setting:
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Cards:
+                                    </td>
+                                    <td>
+                                        <input id="cardNum" placeholder="52" onkeydown="checkNumInput(event)">
 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Players:
+                                    </td>
+                                    <td>
+                                        <select id="playerNum" onchange="updatePlayerNum()">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </td>
-                </tr>
-                <tr>
                     <td>
-                        Players:
-                    </td>
-                    <td>
-                        <select id="playerNum">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
+                        <table class="tablecontainer table-striped" id="dealerTable" style="float:right;">
+                            <thead>
+                                <th>
+                                    Dealer Hand:
+                                </th>
+                                <th>
+                                    Dealer Score:
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="dealerHand"></td>
+                                    <td id="dealerScore">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <button type="submit" style="float: left;padding:5px; margin: 5px;" onclick="newGame()">Start game</button>
+        <button type="submit" style="padding:5px; margin: 5px;" onclick="newGame()">Start game</button>
         </div>
         <span class="col-sm-4"></span>
     <!-- </div> -->
         
         <div id="playerSection" class="col-sm-12"></div>
     </body>
+    <script src="../js/card.js"></script>
+    <script src="../js/helpers.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/player.js"></script>
+
 </html>
