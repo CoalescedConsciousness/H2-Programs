@@ -2,11 +2,10 @@
 function buttonShift()
 {
     console.log("Shifting buttons")
+    console.log(players)
+    console.log(playerTurn)
     for (let i = 0; i < playerTurn.length; i++)
     {
-        console.log(i)
-        console.log(playerTurn)
-        console.log(playerTurn[i])
         targetHit = document.getElementById(`hitPlayer${(playerTurn[i])}`)
         i != 0 ? targetHit.disabled = true : targetHit.disabled = false;
 
@@ -37,9 +36,31 @@ function getRealValue(cardValue)
 // Cycles through players.
 function changePlayer()
 {
+    players[playerTurn[0]].hand = [];
         // Chaaange places!
-        lastPlayer = playerTurn.shift()
-        playerTurn.push(lastPlayer)
+        let validPlayer = false;
+        while (!validPlayer)
+        {
+            if (!playerTurn.length == 0)
+            {
+                lastPlayer = playerTurn.shift()
+                playerTurn.push(lastPlayer)
+                if (document.getElementById(`playerHold${playerTurn[0]}`) > 0)
+                {
+                    playerTurn.pop()
+                }
+                else 
+                {
+                    validPlayer = true;
+                }
+            }
+            else
+            {
+                if (window.confirm("Start new game?")) newGame();
+            }
+        }
+        
+        
         document.getElementById("currentPlayer").innerText = playerTurn[0]
         buttonShift(); // Changes active buttons to correlate with current player.
 }
@@ -70,7 +91,6 @@ function recalcScore(deck)
             result += 11 // First Ace
             tempAceDeck.shift() // Remove it
             result += tempAceDeck.length // Add remaining Aces
-            console.log(result)
         }
         else (result += tempAceDeck.length)
     }
