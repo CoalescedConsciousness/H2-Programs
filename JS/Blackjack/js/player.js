@@ -1,15 +1,25 @@
 const playerSection = document.getElementById("playerSection");
 var counter;
 
+// Programmatically constructs Player board(s).
 function buildHtml()
 {
-    
-    playerSection.innerHTML = ""
+    // Resets board if needed
+    if (playerSection.hasChildNodes())
+    {
+        while (playerSection.hasChildNodes())
+        {
+            playerSection.removeChild(playerSection.firstChild)
+        }
+    }
+
+    // Builds board
     for (item in players)
     {
         counter = parseInt(item) // +1
         let playerBoard = document.createElement('div')
         playerBoard.setAttribute("id", "playerContainer");
+        playerBoard.setAttribute("name", "playerCon");
         playerBoard.setAttribute("class", "col-sm-12");
         playerBoard.style.margin = "2%";
         playerBoard.style.height = "auto";
@@ -39,9 +49,9 @@ function buildHtml()
 
         dataCellOne = dataRow.appendChild(document.createElement('td'))
         input = document.createElement('input')
-        input.style.width = "50px"
+        input.style.width = "60px"
         input.setAttribute("id", `playerName${counter}`)
-        input.setAttribute("placeholder", `P${counter}`)
+        input.setAttribute("placeholder", (players[counter].name ? players[counter].name : `P${counter}`))
         dataCellOne.appendChild(input)
 
         dataCellTwo = dataRow.appendChild(document.createElement('td'))
@@ -84,13 +94,45 @@ function buildHtml()
         let pTurnElement = document.getElementById("currentPlayer")
         pTurnElement.innerText = playerTurn[0] + 1;
         
+        // Player holdings:
+        let pHolding = document.createElement("table")
+        pRow = document.createElement("thead")
+        pHolding.appendChild(pRow)
+        pHeaderText = document.createElement("td")
+        pHeaderText.style.width = "80px"
+        pHeaderText.textContent = "Holding:"
+        pRow.appendChild(pHeaderText)
+        pHeaderValue = document.createElement("td")
+        pHeaderValue.style.width = "50%"
+        pHeaderValue.textContent = players[item].holding
+        pHeaderValue.setAttribute("id", `playerHold${counter}`)
+        pRow.appendChild(pHeaderValue)
+        playerBoard.appendChild(pHolding)
+
+        pBody = document.createElement("tbody")
+        pHolding.appendChild(pBody)
+        pBetText = document.createElement("td")
+        pBetText.style.width = "80px"
+        pBetText.textContent = "Bet:"
+        pBody.appendChild(pBetText)
+        pBetValue = document.createElement("td")
+        pBetValue.style.width = "240px"
+        pBetValue.setAttribute("id", `playerBet${counter}`)
+        pBetValue.textContent = players[item].bet
+        pBody.appendChild(pBetValue)
+        playerBoard.appendChild(pHolding)
     }
 }
-// Player object
-function player() {
-    name: ""
-    score: 0
-    hand: []
+// Player object:
+class player {
+    constructor(name, score, hand, holding, bet)
+    {
+        this._name = name,
+        this._score = score,
+        this._hand = hand,
+        this._holding = holding,
+        this._bet = bet
+    }
 }
 // Function called when the player hits the corresponding "Hit" button (only one can be active at a time).
 function playerHit()
@@ -132,13 +174,18 @@ function playerStand()
 // Creates a number of players dependent to the value given in the settings.
 function createPlayers()
 {
+    players = [];
     for (let i = 0; i < parseInt(document.getElementById("playerNum").value); i++)
     {
         let nPlayer = new player();
         nPlayer.name = `Player ${i}`;
         nPlayer.score = 0;
         nPlayer.hand = [];
+        nPlayer.holding = 100;
+        nPlayer.bet = 0;
         players.push(nPlayer); 
     }
-    return players
+    console.log("ARGH")
+    console.log(players)
 }
+

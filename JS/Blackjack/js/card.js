@@ -1,8 +1,15 @@
 // Card object
-function card() {
-    suite: ""
-    value: ""
+class card {
+    constructor(suite, value) 
+    {
+        this._suite = suite
+        this._value = value
+    }
 }
+// function card() {
+//     suite: ""
+//     value: ""
+// }
 // Constructs a deck using the 2 constant arrays "suites" and "cards"
 function buildDeck()
 {
