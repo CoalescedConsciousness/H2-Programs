@@ -135,40 +135,46 @@ class player {
     }
 }
 // Function called when the player hits the corresponding "Hit" button (only one can be active at a time).
-function playerHit()
+function playerHit(playerLoc)
 {
-    console.log(playerTurn)
-    pTarget = document.getElementById(`playerHand${playerTurn[0]}`)
+    if (!playerLoc) playerLoc = 0
+    pTarget = document.getElementById(`playerHand${playerTurn[playerLoc]}`)
     newHit = document.createElement("p")
     pTarget.appendChild(newHit)
     let hit = deck.pop()
-    console.log("Hi")
-    console.log(players)
-    console.log(players[playerTurn[0]])
-    players[playerTurn[0]].hand.push(hit)
- 
+    
+    players[playerTurn[playerLoc]].hand.push(hit)
+        
     newHit.appendChild(document.createTextNode("["+hit.value+" of "+hit.suite+"]"))
-    playerScore() 
+    playerScore(playerLoc) 
+
+    // Rule specific actions.
+    if (affectingRule = "european" && secondRound == true) 
+    {
+        applyRules()
+        secondRound = "over"
+    }
 }
 // Updates the player score when a given player receives a card, calls recalcScore in the process.
-function playerScore()
+function playerScore(playerLoc)
 {
-    sTarget = document.getElementById(`playerScore${playerTurn[0]}`)
-    // currentVal = parseInt(sTarget.innerText)
-    // console.log(typeof(currentVal))
-    // console.log(players[playerTurn[0]].hand)
-    score = recalcScore(players[playerTurn[0]].hand)
+    sTarget = document.getElementById(`playerScore${playerTurn[playerLoc]}`)
+    score = recalcScore(players[playerTurn[playerLoc]].hand)
 
-    players[playerTurn[0]].score = score;
+    players[playerTurn[playerLoc]].score = score;
     sTarget.innerText = score;
 
     if (score > 21) endTurn(true);
-    if (players[playerTurn[0]].hand.length == 2 && score == 21) endTurn(null)
+    if (players[playerTurn[playerLoc]].hand.length == 2 && score == 21) endTurn(null)
     score = 0;
 }
 // Seperate function for the sake of clarity; simply calls the endTurn function with an argument that indicates the player has chosen to stand.
 function playerStand()
-{
+{   
+    // Rule specific actions
+    if (affectingRule = "european" && secondRound == true) applyRules()
+
+    // Finally
     endTurn(false)
 }
 // Creates a number of players dependent to the value given in the settings.
@@ -185,7 +191,5 @@ function createPlayers()
         nPlayer.bet = 0;
         players.push(nPlayer); 
     }
-    console.log("ARGH")
-    console.log(players)
 }
 

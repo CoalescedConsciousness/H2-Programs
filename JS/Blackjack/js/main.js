@@ -1,12 +1,17 @@
 const suites = [ "Hearts", "Clubs", "Spades", "Diamonds" ]
 const cards = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace" ]
 
+var logging = document.getElementById("logAll").checked
 var deck = [];
-var cardCount = document.getElementById("cardNum").value ? parseInt(document.getElementById("cardNum").value) : 52
+// var cardCount = document.getElementById("cardNum").value ? parseInt(document.getElementById("cardNum").value) : 52
 var playerCount = parseInt(document.getElementById("playerNum").value);
 var players = [];
 var playerTurn = [];
 var gameDealer;
+var dealerDeck = [];
+var gameRuleset = new ruleset();
+var secondRound = false;
+var affectingRule = document.getElementById("ruleSet").value;
 updatePlayerNum();
 
 document.addEventListener('keydown', increaseBet);
@@ -15,7 +20,7 @@ document.addEventListener('keydown', increaseBet);
 function playersToArray()
 {
     playerTurn = [];
-    console.log(`Player Count: ${playerCount}`)
+    if (logging) console.log(`Player Count: ${playerCount}`)
     for (let i = 0; i < playerCount; i++) playerTurn.push(i)
 }
 function updatePlayerNum()
@@ -26,11 +31,22 @@ function updatePlayerNum()
 // Starts new game by building deck > shuffling it > creating players > building player boards > initializing player positions (=> Player 1)
 function newGame()
 {
+    console.log(affectingRule)
+    endTurn("reset")
+    dealerDeck = [];
     deck = buildDeck()
     deck = shuffleCards(deck)
     createPlayers()
     buildHtml();
+    applyRules();
     buttonShift();
+}
+function nextTurn()
+{
+    dealerDeck = [];
+    changePlayer();
+    secondRound = false;
+    applyRules();
 }
 // Ends turn depending on player choice/game result. Trinary result: 
 // 1) player stood, dealers turn (bust == false)
@@ -38,67 +54,140 @@ function newGame()
 // 3) player lost or went bust (bust == true)
 function endTurn(bust)
 {
-    console.log("Turn ending")
-    pScore = document.getElementById(`playerScore${playerTurn[0]}`)
-    pHand = document.getElementById(`playerHand${playerTurn[0]}`)
-    pHolding = document.getElementById(`playerHold${playerTurn[0]}`)
-    pBet = document.getElementById(`playerBet${playerTurn[0]}`)
-
-    if (bust == false) // Player Stood
+    if (logging) console.log("Turn ending")
+    if (bust != "reset")
     {
-        console.log("Sending to Dealer")
-        dealerTurn()
+        pScore = document.getElementById(`playerScore${playerTurn[0]}`)
+        pHand = document.getElementById(`playerHand${playerTurn[0]}`)
+        pHolding = document.getElementById(`playerHold${playerTurn[0]}`)
+        pBet = document.getElementById(`playerBet${playerTurn[0]}`)
         
+        if (bust == false) // Player Stood
+        {
+            console.log("Sending to Dealer")
+            dealerTurn()
+            
+        }
+        if (bust == null) // Player got blackjack/won
+        {
+            console.log("Wahey!")
+            alert("You won!")
+            pHolding.innerText = parseInt(pHolding.innerText) + (1.5 * parseInt(pBet.innerText))
+            pBet.innerText = 0;
+            // Clear Dealer:
+            document.getElementById("dealerHand").innerText = ""
+            document.getElementById("dealerScore").innerText = 0
+            nextTurn();
+        }
+        if (bust == true) // Player busted/lost
+        {
+            console.log("Aww..")
+            alert("You lost!")
+            pHolding.innerText = parseInt(pHolding.innerText) - parseInt(pBet.innerText)
+            pBet.innerText = 0;
+            // Clear Dealer:
+            document.getElementById("dealerHand").innerText = ""
+            document.getElementById("dealerScore").innerText = 0
+            nextTurn();
+
+        }
+        // Clear hand and score:
+        pScore.innerText = 0
+        pHand.innerText = ""
+        // Clear Dealer:
     }
-    if (bust == null) // Player got blackjack/won
+    if (bust == 'reset')
     {
-        console.log("Wahey!")
-        alert("You won!")
-        pHolding.innerText = parseInt(pHolding.innerText) + (1.5 * parseInt(pBet.innerText))
-        pBet.innerText = 0;
-        changePlayer()
+        // Clear Dealer:
+        document.getElementById("dealerHand").innerText = ""
+        document.getElementById("dealerScore").innerText = 0
     }
-    if (bust == true) // Player busted/lost
+
+
+}
+
+// Applies rules based on player selection
+function applyRules()
+{
+    rule = document.getElementById("ruleSet").value ? document.getElementById("ruleSet").value : "classic"
+    console.log(rule)
+    switch (rule)
     {
-        console.log("Aww..")
-        alert("You lost!")
-        pHolding.innerText = parseInt(pHolding.innerText) - parseInt(pBet.innerText)
-        pBet.innerText = 0;
-        changePlayer()
+        case "classic":
+            {
+                dealerHit(true)
+                dealerHit(false)
+                playerHit()
+                playerHit()
+            }
+            break;
+        case "european":
+            {
+                if (secondRound != "over")
+                {
+                    if (secondRound == false)
+                    {
+                        dealerHit(false)
+                        playerHit()
+                        playerHit()
+                        secondRound = true;
+                    }
+                    else if (secondRound == true)
+                    {
+                        dealerHit(true)
+                        secondRound == "over";
+                    }
+                }
+            }
     }
-    // Clear hand and score:
-    pScore.innerText = 0
-    pHand.innerText = ""
-    
-    // Clear Dealer:
-    document.getElementById("dealerHand").innerText = ""
-    document.getElementById("dealerScore").innerText = 0
-
-
-
+}
+function dealerHit(hide)
+{
+    if (logging) console.log("Dealer hit:")
+    let dealerCard = deck.pop()
+    pTarget = document.getElementById(`dealerHand`)
+    newHit = document.createElement("p")
+    pTarget.appendChild(newHit)
+    if (hide)
+    {
+        console.log(hide)
+        newHit.setAttribute("id", "holeCard")
+        holeData = document.createTextNode("[ Hidden ]")
+        dealerCard.holeCard = true;
+        dealerDeck.push(dealerCard)
+        newHit.appendChild(holeData)
+    }
+    else if (!hide)
+    {
+        newHit.appendChild(document.createTextNode("["+dealerCard.value+" of "+dealerCard.suite+"]"))
+        dealerDeck.push(dealerCard)
+    }
+    dScore = document.getElementById(`dealerScore`)
+    console.log(dealerDeck)
+    result = recalcScore(dealerDeck, true)
+    console.log(result)
+    dScore.innerText = result
+    return result
 }
 // Function that iterates through the dealers turn automatically.
 function dealerTurn()
 {
-    let dealerDeck = [];
     let result = 0;
     while (result < 16)
     {
         console.log("Dealing to Dealer")
-        let dealerHit = deck.pop()
-        pTarget = document.getElementById(`dealerHand`)
-        newHit = document.createElement("p")
-        pTarget.appendChild(newHit)
-        newHit.appendChild(document.createTextNode("["+dealerHit.value+" of "+dealerHit.suite+"]"))
-        dScore = document.getElementById(`dealerScore`)
+        result = dealerHit()
         
-        dealerDeck.push(dealerHit)
-        result = recalcScore(dealerDeck)
-        dScore.innerText = result
     }
 
-    if (result > 21 || result < players[playerTurn[0]].score) endTurn(null)
-    else if (result > players[playerTurn[0]].score || result == players[playerTurn[0]].score) endTurn(true)
+    if (result > 21 || result < players[playerTurn[0]].score) 
+    {
+        endTurn(null)
+    }
+    else if (result > players[playerTurn[0]].score || result == players[playerTurn[0]].score) 
+    {
+        endTurn(true)
+    }
 
 }
 function increaseBet(e)

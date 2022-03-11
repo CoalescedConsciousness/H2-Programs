@@ -1,9 +1,10 @@
 // Card object
 class card {
-    constructor(suite, value) 
+    constructor(suite, value, holeCard) 
     {
-        this._suite = suite
-        this._value = value
+        this._suite = suite;
+        this._value = value;
+        this._holeCard = holeCard;
     }
 }
 // function card() {
@@ -13,10 +14,8 @@ class card {
 // Constructs a deck using the 2 constant arrays "suites" and "cards"
 function buildDeck()
 {
-    deck = [];
     for (const x in suites)
     {
-        
         for (let y = 0; y < cards.length; y++)
         {
             var aCard = new card();

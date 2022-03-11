@@ -29,11 +29,14 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        Cards:
+                                        Ruleset:
                                     </td>
                                     <td>
-                                        <input id="cardNum" placeholder="52" onkeydown="checkNumInput(event)">
-
+                                        <!-- <input id="cardNum" placeholder="52" onkeydown="checkNumInput(event)"> -->
+                                        <select id="ruleSet">
+                                            <option value="classic">Classic</option>
+                                            <option value="european">European</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -47,6 +50,14 @@
                                             <option value="3">3</option>
                                             <option value="4">4</option>
                                         </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Logging:
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="logAll">
                                     </td>
                                 </tr>
                             </tbody>
@@ -81,6 +92,7 @@
         
         <div id="playerSection" class="col-sm-12"></div>
     </body>
+    <script src="../js/ruleset.js"></script>
     <script src="../js/card.js"></script>
     <script src="../js/helpers.js"></script>
     <script src="../js/main.js"></script>

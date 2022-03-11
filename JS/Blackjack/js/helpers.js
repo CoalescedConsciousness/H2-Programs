@@ -1,9 +1,9 @@
+var allValues = 0;
+
 // Helper function that toggles buttons in accordance with the currently active player.
 function buttonShift()
 {
-    console.log("Shifting buttons")
-    console.log(players)
-    console.log(playerTurn)
+    if (logging) console.log("Cycling player buttons")
     for (let i = 0; i < playerTurn.length; i++)
     {
         targetHit = document.getElementById(`hitPlayer${(playerTurn[i])}`)
@@ -41,7 +41,7 @@ function changePlayer()
         let validPlayer = false;
         while (!validPlayer)
         {
-            if (!playerTurn.length == 0)
+            if (playerTurn.length != 0)
             {
                 lastPlayer = playerTurn.shift()
                 playerTurn.push(lastPlayer)
@@ -67,8 +67,7 @@ function changePlayer()
 // Function that iterates through a deck every time a new card is added to it, so ensure Aces are handled correctly.
 function recalcScore(deck)
 {
-    console.log("Recalculating")
-    console.log(deck)
+    if (logging) console.log("Recalculating")
     tempAceDeck = []
     let result = 0;
     for (item in deck)
@@ -99,6 +98,9 @@ function recalcScore(deck)
         if (result += 11 > 21) result += 1
         else result += 11
     }
+
+    if (result != 21) result -= deck.find(x => x.holeCard == true) ? getRealValue(deck.find(x => x.holeCard == true).value) : 0
+    
     return result
     
 }
