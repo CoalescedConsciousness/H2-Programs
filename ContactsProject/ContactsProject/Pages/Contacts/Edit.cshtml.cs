@@ -51,14 +51,15 @@ namespace ContactsProject.Pages.Contacts
             }
 
 
-            Contact.EditDate = DateTime.Now.ToString();
+            //Contact.EditDate = DateTime.Now.ToString();
             _context.Attach(Contact).State = EntityState.Modified;
             
 
 
             try
             {
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
+                Repository.ContactWrite(Contact.Id, Contact.Name, Contact.Email, Contact.Phone, Contact.IsFavourite);
             }
             catch (DbUpdateConcurrencyException)
             {

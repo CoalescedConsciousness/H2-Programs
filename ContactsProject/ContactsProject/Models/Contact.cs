@@ -29,11 +29,14 @@ namespace ContactList.Models
 
         [Display(Name = "Last Edited")]
         [HiddenInput]
-        public string? EditDate { get; set; } 
+        public DateTime? EditDate { get; set; } 
         
         [Display(Name = "Created on")]
         [HiddenInput]
         public DateTime? CreateDate { get; set; }
+
+        [HiddenInput]
+        public Boolean? Active { get; set; }
 
     }
 }

@@ -51,7 +51,9 @@ namespace ContactsProject.Pages.Contacts
             if (Contact != null)
             {
                 _context.Contact.Remove(Contact);
-                await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
+                Repository.ContactDelete(Contact.Id);
+
             }
 
             return RedirectToPage("./Index");

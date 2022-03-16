@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ContactList.Models;
 using ContactsProject.Data;
+using Microsoft.Data.SqlClient;
 
 namespace ContactsProject.Pages.Contacts
 {
@@ -16,10 +17,9 @@ namespace ContactsProject.Pages.Contacts
         private readonly IRepository _repo;
         private readonly ContactsProject.Data.ContactsProjectContext _context;
 
-        public CreateModel(ContactsProject.Data.ContactsProjectContext context, IRepository repo)
+        public CreateModel(ContactsProject.Data.ContactsProjectContext context)
         {
             _context = context;
-            _repo = repo;
         }
 
         public IActionResult OnGet()
@@ -38,11 +38,10 @@ namespace ContactsProject.Pages.Contacts
                 return Page();
             }
 
-            Contact.EditDate = null;
-            Contact.CreateDate = DateTime.Now;
-            _context.Contact.Add(Contact);
-            await _context.SaveChangesAsync();
 
+            _context.Contact.Add(Contact);
+            Repository.ContactCreate(Contact.Name, Contact.Email, Contact.Phone, Contact.IsFavourite);
+            
             return RedirectToPage("./Index");
         }
     }

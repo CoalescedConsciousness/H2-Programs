@@ -26,7 +26,8 @@ namespace ContactsProject.Pages.Contacts
 
         public async Task OnGetAsync()
         {
-            Contact = await _context.Contact.ToListAsync();
+            //Contact = await _context.Contact.ToListAsync();
+            Contact = Repository.ContactGetAll();
             Contact = Contact.OrderByDescending(x => x.IsFavourite).ToList();
         }
 

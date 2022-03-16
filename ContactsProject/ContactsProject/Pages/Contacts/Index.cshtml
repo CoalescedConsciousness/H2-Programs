@@ -55,49 +55,99 @@
         @for (int i = 0; i < Model.Contact.Count; i++)
 
              {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Contact[i].Name)
-                    @Html.HiddenFor(model => model.Contact[i].Name)
-                    @Html.HiddenFor(model => model.Contact[i].Id)
+                if (Model.Contact[i].IsFavourite == true)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].Name)
+                            @Html.HiddenFor(model => model.Contact[i].Name)
+                            @Html.HiddenFor(model => model.Contact[i].Id)
+                            @Html.HiddenFor(model => model.Contact[i].Active)
 
-                </td>
-                <td>
-                    @Html.CheckBoxFor(modelItem => Model.Contact[i].IsFavourite)
-                    @*@Html.HiddenFor(model => model.Contact[0].IsFavourite)*@
-                    @*<input type="checkbox" asp-for="@item.IsFavourite" value="IsFavourite"/>
-                    <input type="hidden" asp-for="@item.Id" value="itemId"/>*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Contact[i].Email)
-                    @Html.HiddenFor(model => model.Contact[i].Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Contact[i].Phone)
-                    @Html.HiddenFor(model => model.Contact[i].Phone)
-                </td>
-                <td>
-                   @* @using System.Globalization
-                        @{
-                            CultureInfo test = new CultureInfo("en-US");
-                            DateTime? nDate = DateTime.Parse(Model.Contact[i].EditDate);
-                            <span>@nDate</span>*@
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(modelItem => Model.Contact[i].IsFavourite)
+                            @*@Html.HiddenFor(model => model.Contact[0].IsFavourite)*@
+                            @*<input type="checkbox" asp-for="@item.IsFavourite" value="IsFavourite"/>
+                                <input type="hidden" asp-for="@item.Id" value="itemId"/>*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].Email)
+                            @Html.HiddenFor(model => model.Contact[i].Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].Phone)
+                            @Html.HiddenFor(model => model.Contact[i].Phone)
+                        </td>
+                        <td>
+                            @* @using System.Globalization
+                                @{
+                                CultureInfo test = new CultureInfo("en-US");
+                                DateTime? nDate = DateTime.Parse(Model.Contact[i].EditDate);
+                                <span>@nDate</span>*@
                             @*//@Html.DisplayFor(modelItem => DateTime.Parse(Model.Contact[i].EditDate));
-                    }*@
-                    @Html.DisplayFor(modelItem => Model.Contact[i].EditDate)
-                    @Html.HiddenFor(model => model.Contact[i].EditDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => Model.Contact[i].CreateDate)
-                    @Html.HiddenFor(model => model.Contact[i].CreateDate)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@Model.Contact[i].Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@Model.Contact[i].Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@Model.Contact[i].Id">Delete</a>
-                </td>
-            </tr>
-    }
+                                }*@
+                            @Html.DisplayFor(modelItem => Model.Contact[i].EditDate)
+                            @Html.HiddenFor(model => model.Contact[i].EditDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].CreateDate)
+                            @Html.HiddenFor(model => model.Contact[i].CreateDate)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@Model.Contact[i].Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@Model.Contact[i].Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@Model.Contact[i].Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+                else if (Model.Contact[i].IsFavourite != true)
+                {
+                    <tr style="color:gray;background-color:red;">
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].Name)
+                            @Html.HiddenFor(model => model.Contact[i].Name)
+                            @Html.HiddenFor(model => model.Contact[i].Id)
+                            @Html.HiddenFor(model => model.Contact[i].Active)
+
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(modelItem => Model.Contact[i].IsFavourite)
+                            @*@Html.HiddenFor(model => model.Contact[0].IsFavourite)*@
+                            @*<input type="checkbox" asp-for="@item.IsFavourite" value="IsFavourite"/>
+                            <input type="hidden" asp-for="@item.Id" value="itemId"/>*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].Email)
+                            @Html.HiddenFor(model => model.Contact[i].Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].Phone)
+                            @Html.HiddenFor(model => model.Contact[i].Phone)
+                        </td>
+                        <td>
+                           @* @using System.Globalization
+                                @{
+                                    CultureInfo test = new CultureInfo("en-US");
+                                    DateTime? nDate = DateTime.Parse(Model.Contact[i].EditDate);
+                                    <span>@nDate</span>*@
+                                    @*//@Html.DisplayFor(modelItem => DateTime.Parse(Model.Contact[i].EditDate));
+                            }*@
+                            @Html.DisplayFor(modelItem => Model.Contact[i].EditDate)
+                            @Html.HiddenFor(model => model.Contact[i].EditDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Contact[i].CreateDate)
+                            @Html.HiddenFor(model => model.Contact[i].CreateDate)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@Model.Contact[i].Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@Model.Contact[i].Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@Model.Contact[i].Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
      <input type="submit" value="Save Favourites" class="btn btn-primary">

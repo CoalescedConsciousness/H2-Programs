@@ -53,7 +53,6 @@ namespace ContactsProject.Pages.Contacts
 
         }
         
-        [HttpPost]
         public async Task<IActionResult> OnPostAsync()
         {
             var selectedValue = Request.Form["CType"];

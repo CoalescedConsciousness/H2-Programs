@@ -29,7 +29,8 @@ namespace ContactsProject.Pages.Contacts
                 return NotFound();
             }
 
-            Contact = await _context.Contact.FirstOrDefaultAsync(m => m.Id == id);
+            //Contact = await _context.Contact.FirstOrDefaultAsync(m => m.Id == id);
+            Contact = Repository.GetContactByID(id);
 
             if (Contact == null)
             {

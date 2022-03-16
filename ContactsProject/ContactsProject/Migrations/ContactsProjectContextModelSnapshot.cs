@@ -30,11 +30,14 @@ namespace ContactsProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool?>("Active")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EditDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("EditDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
