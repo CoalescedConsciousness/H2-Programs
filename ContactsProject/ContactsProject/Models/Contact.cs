@@ -36,7 +36,7 @@ namespace ContactList.Models
         public DateTime? CreateDate { get; set; }
 
         [HiddenInput]
-        public Boolean? Active { get; set; }
+        public bool Active { get; set; }
 
     }
 }

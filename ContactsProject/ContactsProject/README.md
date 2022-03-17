@@ -1,8 +1,23 @@
 ﻿### Assignment: Contactlist
 ### Author: Mads Søndergaard
-### Version: 1.0.0
+### Version: 1.1.0
 
 ### Changelog:
+- 1.1.0
+  - Reconfigued storage logic to utilize custom made SQL database, rather than the one originally created via Entity Framework functionality.
+	- Note that, for now, this new SQL logic is non-generic; if time permits, I'll attempt to reconfigure it further, and refactor it into generic logic.
+	- Currently, the Database consists of the following Stored Procedures:
+		- ContactCreate: Creates a Contact
+		- ContactDelete: Deletes a Contact on first pass, Erases it on the second.
+		- ContactWrite: Edits a given column of an existing Contact
+		- ContactRestore: Restores a deleted (but not erased!) contact.
+		- GetContactByID: Fetches a record based on its unique ID
+		- ContactGetAll: Fetches every Contact record
+	- Note that the database does not utilize IDENTITY_INSERT, to avoid confounding pre-existing ID's with new ones, despite allowing for record erasure
+		- The reasoning here, is that to ensure data integrity, and adherence to GDRP legislation, the risk of exposing data to unwanted parties due to ID's only being unique transiently, must be reduced.
+			- This was deemed a necessary precaution, despite the somewhat more messier datastructure in the database itself.
+			- ..Deal with it kids, M'kay?
+
 - 1.0.0
   - Program considered presentation-ready.
     - Ability to Create, Edit, Delete, and Read "Contacts"

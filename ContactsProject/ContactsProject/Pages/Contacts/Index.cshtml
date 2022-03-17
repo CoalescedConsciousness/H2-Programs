@@ -55,7 +55,7 @@
         @for (int i = 0; i < Model.Contact.Count; i++)
 
              {
-                if (Model.Contact[i].IsFavourite == true)
+                if (Model.Contact[i].Active == true)
                 {
                     <tr>
                         <td>
@@ -97,19 +97,18 @@
                         <td>
                             <a asp-page="./Edit" asp-route-id="@Model.Contact[i].Id">Edit</a> |
                             <a asp-page="./Details" asp-route-id="@Model.Contact[i].Id">Details</a> |
-                            <a asp-page="./Delete" asp-route-id="@Model.Contact[i].Id">Delete</a>
+                            <button asp-page-handler="Delete" asp-route-id="@Model.Contact[i].Id">Deactivate</button>
                         </td>
                     </tr>
                 }
-                else if (Model.Contact[i].IsFavourite != true)
+                else if (Model.Contact[i].Active != true)
                 {
-                    <tr style="color:gray;background-color:red;">
+                    <tr style="color:lightgray;">
                         <td>
                             @Html.DisplayFor(modelItem => Model.Contact[i].Name)
                             @Html.HiddenFor(model => model.Contact[i].Name)
                             @Html.HiddenFor(model => model.Contact[i].Id)
                             @Html.HiddenFor(model => model.Contact[i].Active)
-
                         </td>
                         <td>
                             @Html.CheckBoxFor(modelItem => Model.Contact[i].IsFavourite)
@@ -143,7 +142,9 @@
                         <td>
                             <a asp-page="./Edit" asp-route-id="@Model.Contact[i].Id">Edit</a> |
                             <a asp-page="./Details" asp-route-id="@Model.Contact[i].Id">Details</a> |
-                            <a asp-page="./Delete" asp-route-id="@Model.Contact[i].Id">Delete</a>
+                            <button asp-page-handler="Delete" asp-route-id="@Model.Contact[i].Id">Delete</button>
+                            <button asp-page-handler="Restore" asp-route-id="@Model.Contact[i].Id">Restore</button>
+                            
                         </td>
                     </tr>
                 }

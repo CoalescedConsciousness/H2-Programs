@@ -27,7 +27,7 @@ namespace ContactsProject.Pages.Contacts
         public async Task OnGetAsync()
         {
             //Contact = await _context.Contact.ToListAsync();
-            Contact = Repository.ContactGetAll();
+            Contact = await Repository.ContactGetAllAsync();
             Contact = Contact.OrderByDescending(x => x.IsFavourite).ToList();
         }
 
@@ -48,6 +48,41 @@ namespace ContactsProject.Pages.Contacts
 
             _context.SaveChanges();
             Contact = Contact.OrderBy(x => x.IsFavourite).ToList();
+            return RedirectToPage("./Index");
+        }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Contact contact = new Contact();
+            contact = Repository.GetContactByID(id);
+
+            if (contact != null)
+            {
+                //_context.Contact.Remove(Contact);
+                //await _context.SaveChangesAsync();
+                Repository.ContactDelete(contact.Id);
+
+            }
+
+            return RedirectToPage("./Index");
+        }
+
+        public async Task<IActionResult> OnPostRestoreAsync(int id)
+        {
+            if (id == null) return NotFound();
+
+            Contact contact = new Contact();
+            contact = Repository.GetContactByID(id);
+
+            if (contact != null)
+            {
+                Repository.ContactRestore(id);
+            }
             return RedirectToPage("./Index");
         }
     }

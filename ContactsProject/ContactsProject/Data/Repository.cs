@@ -13,6 +13,7 @@ namespace ContactsProject.Data
             "ContactWrite",
             "ContactGetAll",
             "GetContactByID",
+            "ContactRestore"
         };
         public static void ConnectToDB(string queryType, params KeyValuePair<string, object>[] pairs)
         {
@@ -40,6 +41,11 @@ namespace ContactsProject.Data
             KeyValuePair<string, object> id = new KeyValuePair<string, object>("id", ID);
             ConnectToDB(QueryTypes[1], id);
         }
+        public static void ContactRestore(int ID)
+        {
+            KeyValuePair<string, object> id = new KeyValuePair<string, object>("id", ID);
+            ConnectToDB(QueryTypes[5], id);
+        }
         public static void ContactWrite(int ID, string Name, string Email, int Phone, bool IsFavourite)
         {
             KeyValuePair<string, object> id = new KeyValuePair<string, object>("id", ID);
@@ -49,7 +55,7 @@ namespace ContactsProject.Data
             KeyValuePair<string, object> fav = new KeyValuePair<string, object>("fav", IsFavourite);
             ConnectToDB(QueryTypes[2], id, name, email, phone, fav);
         }
-        public static List<Contact> ContactGetAll()
+        public static async Task<List<Contact>> ContactGetAllAsync()
         {
             List<Contact> contacts = new List<Contact>();
             using (var conn = new SqlConnection(CnctString))
@@ -60,19 +66,20 @@ namespace ContactsProject.Data
             {
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                for (int i = 0; i < reader.FieldCount; i++)
+                while (reader.Read())
                 {
-                    reader.Read();
                     Contact contact = new Contact();
                     contact.Id = (int)reader["id"];
                     contact.Name = (string)reader["name"];
                     contact.Email = (string)reader["email"];
                     contact.Phone = (int)reader["phone"];
                     contact.IsFavourite = (bool)reader["IsFavourite"];
+                    contact.Active = (bool)reader["active"];
                     contact.EditDate = reader["EditDate"] != DBNull.Value ? (DateTime)reader["EditDate"] : null;
                     contact.CreateDate = reader["CreateDate"] != DBNull.Value ? (DateTime)reader["CreateDate"] : null;
                     contacts.Add(contact);
                 }
+               
             }
             return contacts;
         }
@@ -95,6 +102,8 @@ namespace ContactsProject.Data
                     contact.Name = (string)reader["name"];
                     contact.Email = (string)reader["email"];
                     contact.Phone = (int)reader["phone"];
+                    contact.IsFavourite = (bool)reader["IsFavourite"];
+                    contact.Active = (bool)reader["active"];
                     contact.EditDate = reader["EditDate"] != DBNull.Value ? (DateTime)reader["EditDate"] : null;
                     contact.CreateDate = reader["CreateDate"] != DBNull.Value ? (DateTime)reader["CreateDate"] : null;
                 }
