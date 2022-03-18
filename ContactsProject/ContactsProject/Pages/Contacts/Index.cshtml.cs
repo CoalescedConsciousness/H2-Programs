@@ -13,11 +13,18 @@ namespace ContactsProject.Pages.Contacts
 {
     public class IndexModel : PageModel
     {
-        private readonly ContactsProject.Data.ContactsProjectContext _context;
+        //private readonly ContactsProject.Data.ContactsProjectContext _context;
 
-        public IndexModel(ContactsProject.Data.ContactsProjectContext context)
+        //public IndexModel(ContactsProject.Data.ContactsProjectContext context)
+        //{
+        //    _context = context;
+        //}
+
+        private Repository _context = null;
+
+        public IndexModel(ContactsProject.Data.Repository context)
         {
-            _context = context;
+            this._context = context;
         }
 
         
@@ -26,8 +33,9 @@ namespace ContactsProject.Pages.Contacts
 
         public async Task OnGetAsync()
         {
+            Contact = (List<Contact>)_context.GetAll();
             //Contact = await _context.Contact.ToListAsync();
-            Contact = await Repository.ContactGetAllAsync();
+            //Contact = await Repository.ContactGetAllAsync();
             Contact = Contact.OrderByDescending(x => x.IsFavourite).ToList();
         }
 
@@ -38,7 +46,8 @@ namespace ContactsProject.Pages.Contacts
                 //    //int id = Contact[i].Id;
                 //    //Contact target = Contact.FirstOrDefault(x => x.Id == id);
                 //    //target.IsFavourite = Request.Form["IsFavourite"].ToString() == "true" ? true : false;
-                _context.Attach(Contact[i]).State = EntityState.Modified;
+                //_context.Attach(Contact[i]).State = EntityState.Modified;
+                _context.Save();
             }
             ////foreach (var contact in Contact)
             //{
@@ -46,7 +55,7 @@ namespace ContactsProject.Pages.Contacts
             //}
 
 
-            _context.SaveChanges();
+            _context.Save();
             Contact = Contact.OrderBy(x => x.IsFavourite).ToList();
             return RedirectToPage("./Index");
         }
@@ -59,13 +68,14 @@ namespace ContactsProject.Pages.Contacts
                 return NotFound();
             }
             Contact contact = new Contact();
-            contact = Repository.GetContactByID(id);
+            contact = _context.GetContactByID(id);
 
             if (contact != null)
             {
-                //_context.Contact.Remove(Contact);
+                _context.Delete(contact.Id);
+                _context.Save();
                 //await _context.SaveChangesAsync();
-                Repository.ContactDelete(contact.Id);
+                //Repository.ContactDelete(contact.Id);
 
             }
 
@@ -77,11 +87,11 @@ namespace ContactsProject.Pages.Contacts
             if (id == null) return NotFound();
 
             Contact contact = new Contact();
-            contact = Repository.GetContactByID(id);
+            contact = _context.GetContactByID(id);
 
             if (contact != null)
             {
-                Repository.ContactRestore(id);
+                _context.ContactRestore(id);
             }
             return RedirectToPage("./Index");
         }

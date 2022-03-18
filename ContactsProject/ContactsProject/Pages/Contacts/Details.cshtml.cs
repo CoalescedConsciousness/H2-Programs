@@ -13,11 +13,11 @@ namespace ContactsProject.Pages.Contacts
 {
     public class DetailsModel : PageModel
     {
-        private readonly ContactsProject.Data.ContactsProjectContext _context;
+        private Repository _context = null;
 
-        public DetailsModel(ContactsProject.Data.ContactsProjectContext context)
+        public DetailsModel(ContactsProject.Data.Repository context)
         {
-            _context = context;
+            this._context = context;
         }
 
         public Contact Contact { get; set; }
@@ -30,7 +30,8 @@ namespace ContactsProject.Pages.Contacts
             }
 
             //Contact = await _context.Contact.FirstOrDefaultAsync(m => m.Id == id);
-            Contact = Repository.GetContactByID(id);
+            Contact = _context.GetContactByID(id);
+            _context.GetFields(Contact);
 
             if (Contact == null)
             {

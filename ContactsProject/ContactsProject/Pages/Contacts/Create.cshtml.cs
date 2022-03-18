@@ -14,13 +14,20 @@ namespace ContactsProject.Pages.Contacts
 {
     public class CreateModel : PageModel
     {
-        private readonly IRepository _repo;
-        private readonly ContactsProject.Data.ContactsProjectContext _context;
+        //private readonly IRepository _repo;
+        //private readonly ContactsProject.Data.ContactsProjectContext _context;
 
-        public CreateModel(ContactsProject.Data.ContactsProjectContext context)
+        //public CreateModel(ContactsProject.Data.ContactsProjectContext context)
+        //{
+        //    _context = context;
+        //}
+        private Repository _context = null;
+
+        public CreateModel(ContactsProject.Data.Repository context)
         {
-            _context = context;
+            this._context = context;
         }
+
 
         public IActionResult OnGet()
         {
@@ -38,10 +45,19 @@ namespace ContactsProject.Pages.Contacts
                 return Page();
             }
 
-
-            _context.Contact.Add(Contact);
-            Repository.ContactCreate(Contact.Name, Contact.Email, Contact.Phone, Contact.IsFavourite);
-            
+            List<Contact> contacts = new List<Contact>();
+            contacts = await _context.ContactGetAllAsync();
+            if (!contacts.Exists(x => x.Name == Contact.Name) ||
+                !contacts.Exists(x => x.Email == Contact.Email) ||
+                !contacts.Exists(x => x.Phone == Contact.Phone))
+            {
+                _context.Create(Contact);
+                _context.Save();
+            }
+            else
+            {
+                ModelState.AddModelError("Code", "A user with that email or phone already exists");
+            }
             return RedirectToPage("./Index");
         }
     }

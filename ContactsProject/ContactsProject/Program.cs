@@ -4,13 +4,16 @@ using ContactsProject.Data;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
-
+using ContactList.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddSingleton<IRepository, Repository>();
+builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<Repository, Repository>();
+
+//builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
 
 builder.Services.AddDbContext<ContactsProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ContactsProjectContext")));

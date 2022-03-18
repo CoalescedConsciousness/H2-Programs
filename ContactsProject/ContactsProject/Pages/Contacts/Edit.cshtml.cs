@@ -14,12 +14,11 @@ namespace ContactsProject.Pages.Contacts
 {
     public class EditModel : PageModel
     {
-        private readonly ContactsProject.Data.ContactsProjectContext _context;
+        private Repository _context = null;
 
-        public EditModel(ContactsProject.Data.ContactsProjectContext context)
+        public EditModel(ContactsProject.Data.Repository context)
         {
-            
-            _context = context;
+            this._context = context;
         }
 
         [BindProperty]
@@ -32,7 +31,8 @@ namespace ContactsProject.Pages.Contacts
                 return NotFound();
             }
 
-            Contact = await _context.Contact.FirstOrDefaultAsync(m => m.Id == id);
+            //Contact = await _context.Contact.FirstOrDefaultAsync(m => m.Id == id);
+            Contact = _context.GetContactByID(id);
 
             if (Contact == null)
             {
@@ -52,14 +52,13 @@ namespace ContactsProject.Pages.Contacts
 
 
             //Contact.EditDate = DateTime.Now.ToString();
-            _context.Attach(Contact).State = EntityState.Modified;
-            
-
+            //_context.Save();
 
             try
             {
                 //await _context.SaveChangesAsync();
-                Repository.ContactWrite(Contact.Id, Contact.Name, Contact.Email, Contact.Phone, Contact.IsFavourite);
+                //_context.ContactWrite(Contact.Id, Contact.Name, Contact.Email, Contact.Phone, Contact.IsFavourite);
+                _context.Update(Contact);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,7 +77,7 @@ namespace ContactsProject.Pages.Contacts
 
         private bool ContactExists(int id)
         {
-            return _context.Contact.Any(e => e.Id == id);
+            return _context.GetContactByID(id) != null ? true : false;
         }
     }
 }

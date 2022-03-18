@@ -1,6 +1,6 @@
 ﻿namespace ContactsProject.Data
 {
-	public interface IRepository
+	public interface IRepository : IGenericRepository<ContactList.Models.Contact>
 	{
 		//void ConnectToDB(string queryType, params KeyValuePair<string, object>[] pairs);
 		//void ContactCreate(string Name, string Email, int Phone, bool IsFavourite);

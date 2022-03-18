@@ -1,9 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 using ContactList.Models;
+using System.Reflection;
 
 namespace ContactsProject.Data
 {
-	public class Repository : IRepository
+	public class Repository : GenericRepository<Contact>, IRepository
 	{
         private const string CnctString = "Server=(localdb)\\mssqllocaldb;Database=ContactsProjectContext-44f784c8-82cd-47d7-873f-3f2c454a3ec0;Trusted_Connection=True;MultipleActiveResultSets=true";
         private static List<string> QueryTypes = new List<string>()
@@ -15,7 +16,12 @@ namespace ContactsProject.Data
             "GetContactByID",
             "ContactRestore"
         };
-        public static void ConnectToDB(string queryType, params KeyValuePair<string, object>[] pairs)
+
+        public Repository(ContactsProjectContext _context) : base(_context)
+        {
+        }
+
+        public void ConnectToDB(string queryType, params KeyValuePair<string, object>[] pairs)
         {
             using (var conn = new SqlConnection(CnctString))
             using (var cmd = new SqlCommand(queryType, conn)
@@ -28,25 +34,28 @@ namespace ContactsProject.Data
                 cmd.ExecuteNonQuery();
             } // Connection is closed here when the scope is.
         }
-        public static void ContactCreate(string Name, string Email, int Phone, bool IsFavourite)
+
+       
+        public void ContactCreate(string Name, string Email, int Phone, bool IsFavourite)
         {
+           
             KeyValuePair<string, object> name = new KeyValuePair<string, object>("name", Name);
             KeyValuePair<string, object> email = new KeyValuePair<string, object>("email", Email);
             KeyValuePair<string, object> phone = new KeyValuePair<string, object>("phone", Phone);
             KeyValuePair<string, object> fav = new KeyValuePair<string, object>("fav", IsFavourite);
             ConnectToDB(QueryTypes[0], name, email, phone, fav);
         }
-        public static void ContactDelete(int ID)
+        public void ContactDelete(int ID)
         {
             KeyValuePair<string, object> id = new KeyValuePair<string, object>("id", ID);
             ConnectToDB(QueryTypes[1], id);
         }
-        public static void ContactRestore(int ID)
+        public void ContactRestore(int ID)
         {
             KeyValuePair<string, object> id = new KeyValuePair<string, object>("id", ID);
             ConnectToDB(QueryTypes[5], id);
         }
-        public static void ContactWrite(int ID, string Name, string Email, int Phone, bool IsFavourite)
+        public void ContactWrite(int ID, string Name, string Email, int Phone, bool IsFavourite)
         {
             KeyValuePair<string, object> id = new KeyValuePair<string, object>("id", ID);
             KeyValuePair<string, object> name = new KeyValuePair<string, object>("name", Name);
@@ -55,7 +64,7 @@ namespace ContactsProject.Data
             KeyValuePair<string, object> fav = new KeyValuePair<string, object>("fav", IsFavourite);
             ConnectToDB(QueryTypes[2], id, name, email, phone, fav);
         }
-        public static async Task<List<Contact>> ContactGetAllAsync()
+        public async Task<List<Contact>> ContactGetAllAsync()
         {
             List<Contact> contacts = new List<Contact>();
             using (var conn = new SqlConnection(CnctString))
@@ -83,8 +92,9 @@ namespace ContactsProject.Data
             }
             return contacts;
         }
-        public static Contact GetContactByID(int? Id)
+        public Contact GetContactByID(int? Id)
         {
+            
             Contact contact = new Contact();
             KeyValuePair<string, object> id = new KeyValuePair<string, object>("id", Id);
             using (var conn = new SqlConnection(CnctString))

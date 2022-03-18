@@ -13,12 +13,13 @@ namespace ContactsProject.Pages.Contacts
 {
     public class DeleteModel : PageModel
     {
-        private readonly ContactsProject.Data.ContactsProjectContext _context;
+        private Repository _context = null;
 
-        public DeleteModel(ContactsProject.Data.ContactsProjectContext context)
+        public DeleteModel(ContactsProject.Data.Repository context)
         {
-            _context = context;
+            this._context = context;
         }
+
 
         [BindProperty]
         public Contact Contact { get; set; }
@@ -31,7 +32,7 @@ namespace ContactsProject.Pages.Contacts
             }
 
             //Contact = await _context.Contact.FirstOrDefaultAsync(m => m.Id == id);
-            Contact = Repository.GetContactByID(id);
+            Contact = _context.GetContactByID(id);
 
             if (Contact == null)
             {
@@ -47,13 +48,13 @@ namespace ContactsProject.Pages.Contacts
                 return NotFound();
             }
 
-            Contact = await _context.Contact.FindAsync(id);
+            Contact = _context.GetContactByID(id);
 
             if (Contact != null)
             {
                 //_context.Contact.Remove(Contact);
                 //await _context.SaveChangesAsync();
-                Repository.ContactDelete(Contact.Id);
+                _context.ContactDelete(Contact.Id);
 
             }
 
